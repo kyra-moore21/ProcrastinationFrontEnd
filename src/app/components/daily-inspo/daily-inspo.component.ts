@@ -17,4 +17,5 @@ export class DailyInspoComponent {
     private recipeService:RecipeService, private triviaService:TriviaService, 
     private weatherService:WeatherService){}
 
+    
 }

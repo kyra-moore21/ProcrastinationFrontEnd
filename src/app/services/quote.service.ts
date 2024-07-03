@@ -10,6 +10,6 @@ export class QuoteService {
 
   constructor(private http: HttpClient) { }
   getQuote():Observable<QuoteModel>{
-    return this.http.get<QuoteModel>(`https://zenquotes.io/api/quotes/`)
+    return this.http.get<QuoteModel>(`https://zenquotes.io/api/random`)
   }
 }

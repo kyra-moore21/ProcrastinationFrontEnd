@@ -3,6 +3,7 @@
 environments/
 /environment
 environment/
+environment
 # Compiled output
 /dist
 /tmp
