@@ -10,7 +10,13 @@ export class JokeService {
 
   constructor(private http:HttpClient) { }
 
-  getJokes():Observable<JokeModel>{
-    return this.http.get<JokeModel>(`https://api.sampleapis.com/jokes/goodJokes`)
+  getJokes():Observable<JokeModel[]>{
+    return this.http.get<JokeModel[]>(`https://api.sampleapis.com/jokes/goodJokes`)
   }
+
+  getById(id:number):Observable<JokeModel>{
+    return this.http.get<JokeModel>(`https://api.sampleapis.com/jokes/goodJokes/${id}`)
+  }
+
+
 }

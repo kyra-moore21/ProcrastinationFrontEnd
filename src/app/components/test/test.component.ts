@@ -25,24 +25,15 @@ export class TestComponent {
       user:SocialUser = {} as SocialUser
 
       ngOnInit(){
-        this.GetJokes()
+       
         this.GetTrivia()
         this.GetRecipe()
         
 
       }
 
-      GetJokes(){
-        this.jokeService.getJokes().subscribe((response:JokeModel)=>{
-          console.log(response)
-        })
-      }
+      
 
-      GetQuote(){
-        this.quoteService.getQuote().subscribe((response:QuoteModel)=>{
-          console.log(response)
-        })
-      }
 
       GetTrivia(){
         this.triviaService.getTrivia().subscribe((response:TriviaModel)=>{

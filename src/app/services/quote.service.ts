@@ -7,9 +7,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class QuoteService {
+   url:string = "https://localhost:7169"
 
   constructor(private http: HttpClient) { }
-  getQuote():Observable<QuoteModel>{
-    return this.http.get<QuoteModel>(`https://zenquotes.io/api/random`)
+  GetAll():Observable<QuoteModel[]>{
+    return this.http.get<QuoteModel[]>(`${this.url}/api/Quote`)
   }
 }

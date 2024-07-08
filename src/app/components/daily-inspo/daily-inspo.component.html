@@ -1,1 +1,6 @@
-<p>daily-inspo works!</p>
+@if(this.GetDisplay() == "quote"){
+    @for(q of AllQuotes ; track $index){
+        <p>{{ q.q }} {{ q.a }}</p> 
+     }
+}
+<p>{{ GetJokesById() }}</p>
