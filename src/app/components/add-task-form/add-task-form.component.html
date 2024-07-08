@@ -1,0 +1,11 @@
+
+<div>
+    <h3>Add a Task</h3>
+    <label for="task1">Task</label>
+    <input type="text" id="task1" [(ngModel)]="formTask.task1" />
+    <label for="deadline">Deadline</label>
+    <input type="date" id="deadline" [(ngModel)]="formTask.deadline" />
+    <label for="details">Details</label>
+    <input type="text" id="details" [(ngModel)]="formTask.details" />
+    <button type="submit" (click)="emitSubmitted()">Add Task</button>
+</div>

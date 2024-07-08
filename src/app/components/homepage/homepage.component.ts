@@ -3,30 +3,17 @@ import { DailyInspoComponent } from '../daily-inspo/daily-inspo.component';
 import { TaskService } from '../../services/task.service';
 import { UserService } from '../../services/user.service';
 import { TaskModel } from '../../models/task';
+import { MealPlannerComponent } from '../meal-planner/meal-planner.component';
+import { TaskListComponent } from '../task-list/task-list.component';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [DailyInspoComponent],
+  imports: [DailyInspoComponent, MealPlannerComponent, TaskListComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
 
-  constructor(private taskService:TaskService, private userService:UserService){}
-  AllTasks:TaskModel [] = [];
-  ngOnInit(){
-    this.getTasks();
-  }
-
-  getTasks(){
-    this.taskService.GetAllTasks().subscribe((response: TaskModel[]) => {
-      console.log(response);
-      this.AllTasks = response;
-    });
-  }
-
-  getUser(){
-    return this.userService.currentUser.userId;
-  }
+ 
 }
