@@ -10,7 +10,10 @@ import { environment } from '../../environments/environment.development';
 export class WeatherService {
 
   constructor(private http:HttpClient) { }
-  getWeather():Observable<WeatherModel>{
-    return this.http.get<WeatherModel>(`https://api.openweathermap.org/data/2.5/weather?q=Hazel Park&appid=${environment.weatherApiKey}&units=imperial"`);
+
+  url:string = "https://localhost:7169";
+
+  getWeather(city:string):Observable<WeatherModel>{
+    return this.http.get<WeatherModel>(`${this.url}/api/Weather?city=${city}`);
   }
 }

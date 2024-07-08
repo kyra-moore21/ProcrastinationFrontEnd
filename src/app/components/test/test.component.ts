@@ -7,11 +7,12 @@ import { WeatherService } from '../../services/weather.service';
 import { JokeModel } from '../../models/joke';
 import { QuoteModel } from '../../models/quote';
 import { TriviaModel } from '../../models/trivia';
+import { GoogleSigninButtonModule, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-test',
   standalone: true,
-  imports: [],
+  imports: [GoogleSigninButtonModule],
   templateUrl: './test.component.html',
   styleUrl: './test.component.css'
 })
@@ -21,13 +22,12 @@ export class TestComponent {
       private weatherService:WeatherService){}
   
 
+      user:SocialUser = {} as SocialUser
 
       ngOnInit(){
         this.GetJokes()
-        this.GetQuote()
         this.GetTrivia()
         this.GetRecipe()
-        this.GetWeather()
         
 
       }
@@ -52,12 +52,6 @@ export class TestComponent {
 
       GetRecipe(){
         this.recipeService.getRecipes().subscribe((response)=>{
-          console.log(response)
-        })
-      }
-
-      GetWeather(){
-        this.weatherService.getWeather().subscribe((response)=>{
           console.log(response)
         })
       }
