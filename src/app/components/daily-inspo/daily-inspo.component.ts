@@ -26,10 +26,12 @@ export class DailyInspoComponent {
    AllQuotes: QuoteModel [] = [];
    AllJokes : JokeModel [] = []; 
     JokeLength: number = 0;
-    
+    randomJoke: JokeModel = {} as JokeModel;
 
    ngOnInit(){
     this.DisplayQuote();
+    this.GetJokesLength();
+    this.GetJokesById();
     }
   GetDisplay(){
     return this.userService.currentUser.display;
@@ -51,12 +53,12 @@ export class DailyInspoComponent {
     return this.JokeLength;
   }
 
-  GetJokesById():Observable<JokeModel>{
-    let result =  {} as JokeModel;
-    let random = Math.floor(Math.random() * this.GetJokesLength());
+  GetJokesById(){
+    //let result =  {} as JokeModel;
+    let random = Math.floor(Math.random() * this.JokeLength);
     this.jokeService.getById(random).subscribe((response: JokeModel)=>{
       console.log(response);
-      result = response;
+      this.randomJoke = response;
 
      })
     
