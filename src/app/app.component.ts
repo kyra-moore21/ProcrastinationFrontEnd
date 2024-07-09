@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { TestComponent } from './components/test/test.component';
 import { GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { UserService } from './services/user.service';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TestComponent, GoogleSigninButtonModule, HomepageComponent],
+  imports: [RouterOutlet, TestComponent, GoogleSigninButtonModule, HomepageComponent, ProfileComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

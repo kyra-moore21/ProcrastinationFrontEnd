@@ -3,5 +3,27 @@
         <p>{{ q.q }} {{ q.a }}</p> 
      }
 }
-<p>{{randomJoke.setup}}</p>
-<p>{{randomJoke.punchline}}</p>
+@else if(this.GetDisplay() == "joke"){
+    <p>{{randomJoke.setup}}</p>
+    <p>{{randomJoke.punchline}}</p>
+}
+@else if (this.GetDisplay() == "weather") {
+    <label for="weather">Enter your City</label>
+    <input type="text" id="weather" [(ngModel)]="city"/>
+    <button (click)="getWeather(city)">Submit</button>
+
+@if(this.city != ""){
+<p>{{weather.main.temp}}</p>
+@for (w of weather.weather; track $index) {
+    <p>{{w.description}}</p>
+}
+}
+}
+@else if (this.GetDisplay() == "trivia") {
+    @for (t of trivia.results; track $index) {
+        <p [innerHTML]="t.question"></p>
+        <p>{{t.correct_answer}}</p>
+    }
+}
+
+
