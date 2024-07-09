@@ -2,4 +2,31 @@
 
 <h3>{{randomRecipe.title}}</h3>
 <p>{{randomRecipe.ingredients}}</p>
-<p>{{randomRecipe.directions}}</p>
+<img src="randomRecipe.photoUrl"   />
+
+@for (m of allMeals; track $index) {
+    @if(m.userId == this.getUser()){
+        <p>{{ m.title }}</p>
+        @if( m.isCompleted){
+            <button (click)="completeMeal(m)">yes</button>
+        }
+        @else{
+            <button (click)="completeMeal(m)">no</button>
+        }
+        
+        <p>{{ m.url }}</p>
+        @if(m.like == true){
+            <p><button (click)="likeMeal(m)">thumbs up</button></p>
+    <!-- add bootstrap thumps up/down -->
+        }
+        @else {
+            <p><button (click)="likeMeal(m)">thumbs down</button></p>
+    }
+    
+    }
+
+}
+
+
+<app-add-meal-form (Submitted)="AddMeal($event)"></app-add-meal-form>
+

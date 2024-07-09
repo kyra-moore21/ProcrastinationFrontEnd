@@ -1,0 +1,9 @@
+
+<div>
+    <h2>Add Meal</h2>
+    <label for="title" >Title</label>
+    <input id="title" type="text" [(ngModel)]="this.formMeal.title">
+    <label for="url" >Url</label>
+    <input id="url" type="text" [(ngModel)]="this.formMeal.url">
+    <button type="submit" (click)="emitSubmitted()">Add Meal</button>
+</div>
