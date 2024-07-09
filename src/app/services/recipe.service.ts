@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class RecipeService {
 
   constructor(private http: HttpClient) { }
-  getRecipes():Observable<RecipeModel>{
-    return this.http.get<RecipeModel>(`https://api.sampleapis.com/recipes/recipes`)
+  getRecipes():Observable<RecipeModel[]>{
+    return this.http.get<RecipeModel[]>(`https://api.sampleapis.com/recipes/recipes`)
   }
 }
