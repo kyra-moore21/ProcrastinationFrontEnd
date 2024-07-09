@@ -16,6 +16,7 @@ export class MealPlannerComponent {
 
   allMeals: MealPlannerModel[] = [];
   allRecipes: RecipeModel[] = [];
+  randomRecipe: RecipeModel = {} as RecipeModel;
 
   GetAllMeals(){
     this.mealService.GetAll().subscribe((response)=>{
@@ -58,18 +59,18 @@ export class MealPlannerComponent {
   }
 
   getRandom():number{
-    let random = Math.floor(Math.random() *   59);
+    let random = Math.floor(Math.random() * 59);
     console.log(random); 
     return random;
   }
 
-//  GetRandomMeal(){
-//   let random = this.getRandom();
-//   console.log(random);
-//   this.recipeService.getById(random).subscribe((response: MealPlannerModel)=>{
-//     console.log(response);
-//     this.randomMeal = response;
-//    });
-//  }
+ GetRandomRecipe(){
+  let random:number = this.getRandom();
+  console.log(random);
+  this.recipeService.GetRecipeByID(random).subscribe((response: RecipeModel)=>{
+    console.log(response);
+    this.randomRecipe = response;
+   });
+ }
 
 }
