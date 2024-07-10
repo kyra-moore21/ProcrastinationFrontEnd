@@ -1,1 +1,12 @@
-<p>profile works!</p>
+<h3></h3>
+<img  [src]="currentUsers.photoUrl " width="50" height="50"/>
+<p>{{currentUsers.firstName}} {{ currentUsers.lastName }}</p>
+
+<label for="display">Set Display</label>
+<select name="display" id="display"[(ngModel)]="currentUsers.display">
+    <option value="joke" >Joke</option>
+    <option value="quote">Quote</option>
+    <option value="weather">Weather</option>
+    <option value="trivia">Trivia</option>
+</select>
+    <button type="submit" (click)="updateUser(this.currentUsers)" >Set Display</button>
