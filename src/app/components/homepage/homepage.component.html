@@ -1,16 +1,22 @@
 @if(!this.IsLoggedIn()){
-    <h1>Sign in to use</h1>
-    <h4>About</h4>
-    <p row="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-        Excepteur sint occaecat cupidatat non proident, 
-        sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h4>Example List</h4>
+    <h5>Sign In To Create Your Own</h5>
+   @for (t of ExampleTasks; track t.userId) {
+    <h6>@if(!t.isComplete){
+        <button (click)="toggle(t)">Complete</button>}
+        @else {
+            <button (click)="toggle(t)">Not Complete</button>
+        }
+        {{t.task1}}
+        
+        {{t.deadline | date: 'shortDate'}}
+    </h6>
+    <p>{{t.details}}</p>
+   }
 }
 @else {
     
     <app-daily-inspo></app-daily-inspo>
-    <button>Add a Task</button>
     <app-task-list></app-task-list>
     <app-meal-planner></app-meal-planner>
   

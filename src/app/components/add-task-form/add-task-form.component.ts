@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskModel } from '../../models/task';
 import { UserService } from '../../services/user.service';
@@ -11,8 +11,10 @@ import { UserService } from '../../services/user.service';
   styleUrl: './add-task-form.component.css'
 })
 export class AddTaskFormComponent {
+ 
   @Output() Submitted = new EventEmitter<TaskModel>();
     formTask: TaskModel = {} as TaskModel;
+    display:boolean = false;
     constructor(private userService:UserService){}
 
     emitSubmitted(){
@@ -20,6 +22,10 @@ export class AddTaskFormComponent {
       this.formTask.userId = this.userService.currentUser.userId;
       let newTask:TaskModel = {...this.formTask};
      this.Submitted.emit(newTask);
+     this.toggleAdd();
      this.formTask = {} as TaskModel;
+    }
+    toggleAdd(){
+      this.display = !this.display;
     }
 }

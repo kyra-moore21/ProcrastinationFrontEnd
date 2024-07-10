@@ -1,11 +1,24 @@
 
-<div>
-    <h3>Add a Task</h3>
-    <label for="task1">Task</label>
-    <input type="text" id="task1" [(ngModel)]="formTask.task1" />
-    <label for="deadline">Deadline</label>
-    <input type="date" id="deadline" [(ngModel)]="formTask.deadline" />
-    <label for="details">Details</label>
-    <input type="text" id="details" [(ngModel)]="formTask.details" />
-    <button type="submit" (click)="emitSubmitted()">Add Task</button>
-</div>
+
+@if(!display){
+    <button (click)="toggleAdd()">Add a Task</button>
+    }
+    @else {
+        <div class="overlay">
+            <div class="form-popup">
+                <form ngNativeValidate  >
+
+                    <h3>Add a Task</h3>
+                    <label for="task1" class="form-label">Task</label>
+                    <input type="text" id="task1" class="form-control" name="task1" [(ngModel)]="formTask.task1" required=""/>
+                    <label for="deadline">Deadline</label>
+                    <input type="date" id="deadline" name="deadline" [(ngModel)]="formTask.deadline" required="" />
+                    <label for="details">Details</label>
+                    <input type="text" id="details" name="details" [(ngModel)]="formTask.details" required=""/>
+                    <button type="submit" (click)="emitSubmitted()">Add Task</button>
+                    <button (click)="toggleAdd()">X</button>
+                </form>
+    
+            </div>
+        </div>
+    }

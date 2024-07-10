@@ -1,12 +1,15 @@
-<a routerLink="/">Home</a>
+<div class="container">
 
-
-@if (!IsLoggedIn()){
-    <asl-google-signin-button></asl-google-signin-button>
-}
-@else {<a routerLink="/profile">profile</a>
+    <a routerLink="/">Home</a>
     
-    <button (click)="signOut()" routerLink="/">Sign Out</button>
-}
-
-<router-outlet></router-outlet>
+    
+    @if (!IsLoggedIn()){
+        <asl-google-signin-button></asl-google-signin-button>
+    }
+    @else {<a routerLink="/profile">profile</a>
+        
+        <button (click)="signOut()" routerLink="/">Sign Out</button>
+    }
+    
+    <router-outlet></router-outlet>
+</div>

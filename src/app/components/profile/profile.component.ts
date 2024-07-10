@@ -15,6 +15,7 @@ export class ProfileComponent {
 constructor(private userService: UserService,){}
 currentUsers: UserModel  = {}as UserModel;
 isLoggedIn:boolean = false;
+deletedisplay:boolean = false;
 
 ngOnInit(){
   this.getCurrentUser();
@@ -31,5 +32,13 @@ this.userService.UpdateUser(targetUser).subscribe((response)=>{
   this.getCurrentUser();
 })
 }
-
+toggleDisplay(){
+  this.deletedisplay = !this.deletedisplay;
+}
+deleteUser(id:number){
+  this.userService.DeleteUser(id).subscribe((response) => {
+    console.log(response);
+    this.userService.signOut();
+  })
+}
 }

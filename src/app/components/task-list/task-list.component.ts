@@ -4,11 +4,12 @@ import { TaskService } from '../../services/task.service';
 import { UserService } from '../../services/user.service';
 import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [AddTaskFormComponent, FormsModule],
+  imports: [AddTaskFormComponent, FormsModule, DatePipe],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
@@ -18,10 +19,11 @@ export class TaskListComponent {
   AllTasks:TaskModel [] = [];
   updateTask = {} as TaskModel;
 
+
   ngOnInit(){
     this.getTasks();
   }
-
+  
   getTasks(){
     this.taskService.GetAllTasks().subscribe((response: TaskModel[]) => {
       console.log(response);

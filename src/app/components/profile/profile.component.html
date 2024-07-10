@@ -10,3 +10,19 @@
     <option value="trivia">Trivia</option>
 </select>
     <button type="submit" (click)="updateUser(this.currentUsers)" >Set Display</button>
+<br>
+
+
+    @if(!deletedisplay){
+        <button (click)="toggleDisplay()">Delete Account</button>
+    }
+    @else {
+        <div class="overlay">
+            <div class="form-popup">
+
+                <p>Are you sure? Once you delete your account, all your data will be lost. </p>
+                <button (click)="toggleDisplay()">Nevermind, I want to keep my account</button>
+                <button routerLink="/" (click)="deleteUser(this.currentUsers.userId)">Delete Account</button>
+            </div>
+        </div>
+    }

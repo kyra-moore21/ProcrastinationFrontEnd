@@ -1,11 +1,16 @@
-<app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>
+
+            <app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>
+ 
+
 @for (t of AllTasks; track t.taskId) {
     @if(t.userId == this.getUser()){
         @if(t.isComplete == true){
-            <p><button (click)="completeTask(t)">checked</button>{{t.created}} {{t.task1}} {{t.deadline}} {{t.details}} </p>
+            <h6><button (click)="completeTask(t)">checked</button>{{t.task1}}  {{t.deadline}}</h6>
+            <p>{{t.details}}</p>
         } 
         @else{
-            <p><button (click)="completeTask(t)">not checked</button>{{t.created}} {{t.task1}} {{t.deadline}} {{t.details}} </p>
+            <p><button (click)="completeTask(t)">not checked</button> {{t.task1}} {{t.deadline | date: 'shortDate'}}</p>
+            <p>{{t.details}}</p>
         } 
         }
         
