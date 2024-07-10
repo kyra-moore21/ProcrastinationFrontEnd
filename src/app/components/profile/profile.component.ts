@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class ProfileComponent {
 constructor(private userService: UserService,){}
 currentUsers: UserModel  = {}as UserModel;
+isLoggedIn:boolean = false;
 
 ngOnInit(){
   this.getCurrentUser();
