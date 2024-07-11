@@ -21,6 +21,7 @@ export class MealPlannerComponent {
   allRecipes: RecipeModel[] = [];
   randomRecipe: RecipeModel = {} as RecipeModel;
   formMeal: MealPlannerModel = {} as MealPlannerModel;
+  displayRecipe:boolean = false;
 
 ngOnInit(){
   this.GetAllRecipes();
@@ -104,4 +105,24 @@ getUser(){
    });
  }
 
+ ConvertRecipetoMeal(r:RecipeModel){
+
+  let meal:MealPlannerModel = {
+    userId: this.userService.currentUser.userId,
+    mealId: 0,
+    title: r.title,
+    url: r.url,
+    like: false,
+    isCompleted: false
+  }
+  this.AddMeal(meal)
+ }
+ ShowRecipe(){
+  this.displayRecipe = !this.displayRecipe;
+ }
+
+ ShuffleRecipe(){
+  this.displayRecipe = true;
+  this.GetRandomRecipe()
+ }
 }

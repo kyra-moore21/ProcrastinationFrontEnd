@@ -1,30 +1,47 @@
 
-
+<p>Click Here for a random Recipe suggestion!</p>
+@if(displayRecipe == true){
+<button (click)="ShuffleRecipe()">Shuffle</button>
 <h3>{{randomRecipe.title}}</h3>
 <p>{{randomRecipe.ingredients}}</p>
-<img src="randomRecipe.photoUrl"   />
 
+<img [width]="50" [src]="randomRecipe.photoUrl" />
+<p>{{randomRecipe.url}}</p>
+<button (click)="ConvertRecipetoMeal(randomRecipe)">Add this meal</button>
+<button (click)="ShowRecipe()">hide recipe</button>
+
+}
+@else{
+<button (click)="ShowRecipe()">Recipe</button>
+
+}
+
+
+<p>--------------------</p>
+<h1>My Meals</h1>
 @for (m of allMeals; track $index) {
-    @if(m.userId == this.getUser()){
-        <p>{{ m.title }}</p>
+    @if(m.userId == this.getUser()){<p>
         @if( m.isCompleted){
-            <button (click)="completeMeal(m)">yes</button>
+            <button (click)="completeMeal(m)">Completed</button>
         }
         @else{
-            <button (click)="completeMeal(m)">no</button>
+            <button (click)="completeMeal(m)">Not Completed</button>
         }
-        
-        <p>{{ m.url }}</p>
+        {{ m.title }}
+
+
+
         @if(m.like == true){
-            <p><button (click)="likeMeal(m)">thumbs up</button></p>
+            <button (click)="likeMeal(m)">thumbs up</button>
     <!-- add bootstrap thumps up/down -->
         }
-        @else {
-            <p><button (click)="likeMeal(m)">thumbs down</button></p>
-    }
-    
-    }
 
+        @else {
+            <button (click)="likeMeal(m)">thumbs down</button>
+    }
+    }
+    <p>{{ m.url }}</p>
+ 
 }
 
 
