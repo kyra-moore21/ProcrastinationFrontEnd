@@ -1,18 +1,32 @@
+<app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>
+<h4>Today's Date: {{ currentDateTime }} </h4>
 
-            <app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>
- 
-<h4>Today's Date:  {{ currentDateTime }} </h4>
-@for (t of AllTasks; track t.taskId) {
+<ul class="list-group">
+    @for (t of AllTasks; track t.taskId) {
     @if(t.userId == this.getUser()){
-        @if(t.isComplete == true){
-            <h6><button (click)="completeTask(t)">checked</button>{{t.task1}}  {{t.deadline | date: 'shortDate'}}<button (click)="deleteTask(t.taskId)">Delete</button></h6>
-            <p>{{t.details}}</p>
-        } 
-        @else{
-            <p><button (click)="completeTask(t)">not checked</button> {{t.task1}} {{t.deadline | date: 'shortDate'}}<button (click)="deleteTask(t.taskId)">Delete</button></p>
-            <p>{{t.details}}</p>
-        } 
-        }
-        
+    @if(t.isComplete == true){
+    <li class="list-group-item d-flex justify-content-between">
+        <h6><button (click)="completeTask(t)">checked</button>{{t.task1}} {{t.deadline | date: 'shortDate'}}
+
+            <button (click)="deleteTask(t.taskId)">Delete</button>
+        </h6>
+        <ul>
+            <li>{{ t.details }}</li>
+
+        </ul>
+    </li>
+
+    }
+    @else{
+    <li class="list-group-item d-flex justify-content-between">
+        <p><button (click)="completeTask(t)">not checked</button> {{t.task1}} {{t.deadline | date: 'shortDate'}}<button
+                (click)="deleteTask(t.taskId)">Delete</button></p>
+                
+    </li>
+    <li>{{t.details}}</li>
+    
+    }
     }
 
+    }
+</ul>
