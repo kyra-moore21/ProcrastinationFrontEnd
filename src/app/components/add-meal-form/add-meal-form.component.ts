@@ -27,6 +27,7 @@ export class AddMealFormComponent {
     let addMeal: MealPlannerModel = { ...this.formMeal };
     this.Submitted.emit(addMeal);
     this.formMeal = {} as MealPlannerModel;
+    this.display = !this.display;
   }
   toggleAdd() {
     this.display = !this.display;

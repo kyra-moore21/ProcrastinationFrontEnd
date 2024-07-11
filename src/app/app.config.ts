@@ -5,6 +5,8 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { environment } from '../environments/environment.development';
+import { dateTimestampProvider } from 'rxjs/internal/scheduler/dateTimestampProvider';
+import { DatePipe } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
@@ -30,5 +32,4 @@ export const appConfig: ApplicationConfig = {
       } as SocialAuthServiceConfig,
     },
     //more providers can go here
-   provideHttpClient()]
-};
+   provideHttpClient(), DatePipe]};

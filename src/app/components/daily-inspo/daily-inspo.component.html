@@ -11,7 +11,7 @@
     <label for="weather">Enter your City</label>
     <input type="text" id="weather" [(ngModel)]="city"/>
     <button (click)="getWeather(city)">Submit</button>
-
+<br/>
 @if(this.city != ""){
 <p>{{weather.main.temp}}</p>
 @for (w of weather.weather; track $index) {

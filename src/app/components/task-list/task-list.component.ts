@@ -14,16 +14,24 @@ import { DatePipe } from '@angular/common';
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent {
-  
-  constructor(private taskService:TaskService, private userService:UserService){}
+  currentDateTime: string| null = "a";
+  constructor(private taskService:TaskService, private userService:UserService,public datePipe: DatePipe){
+    this.currentDateTime = this.datePipe.transform((new Date), 'fullDate');
+  }
   AllTasks:TaskModel [] = [];
   updateTask = {} as TaskModel;
-
+  // currentDate: Date = ;
+ 
 
   ngOnInit(){
     this.getTasks();
+   
   }
   
+// getCurrentDate(){
+//   this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
+// }
+
   getTasks(){
     this.taskService.GetAllTasks().subscribe((response: TaskModel[]) => {
       console.log(response);
@@ -46,4 +54,12 @@ export class TaskListComponent {
       this.getTasks();
     });
   }
+deleteTask(id: number){
+this.taskService.DeleteTask(id).subscribe((response) =>{
+  console.log(response);
+  this.getTasks();
+})
+
+}
+  
 }

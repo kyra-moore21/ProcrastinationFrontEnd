@@ -30,6 +30,6 @@ export class TaskService {
 
 
   DeleteTask(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.url}/api/Task${id}`)
+    return this.http.delete<void>(`${this.url}/api/Task/${id}`)
   }
 }
