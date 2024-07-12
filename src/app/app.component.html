@@ -1,22 +1,30 @@
 
-<div class="container-fluid">
-    
- 
-    
-    @if (!IsLoggedIn()){
-        <asl-google-signin-button></asl-google-signin-button>
-    }
-    @else {
-    <a routerLink="/homepage">Home</a> 
-    <a routerLink="/profile">profile</a>
-        <button (click)="signOut()" routerLink="/">Sign Out</button>
-    }
-    
+<div class="container-fluid pb- 8">
+    <nav class="navbar navbar-expand navbar-light navbar-custom fixed-top mb-8">
+        <!-- <a class="navbar-brand" routerLink="/homepage">Procrastinator Planner</a> -->
+
+
+        @if (!IsLoggedIn()){
+        <span class="ms-auto google-btn">
+            <asl-google-signin-button></asl-google-signin-button>
+        </span>
+        }
+        @else {
+        <a routerLink="/profile">Profile</a>
+        <span class="ms-auto google-btn">
+            <button (click)="signOut()" routerLink="/">Sign Out</button>
+
+
+        </span>
+        }
+
+
+    </nav>
 </div>
 
-<div class="container">
 
 
- 
+
+<div class="container pt-4 bg-light">
     <router-outlet></router-outlet>
-</div>
+  </div>

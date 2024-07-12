@@ -4,8 +4,8 @@
 <h4>Today's Date: {{ currentDateTime }} </h4>
 
 <ul class="list-group">
-    @for (t of AllTasks; track t.taskId) {
-    @if(t.userId == this.getUser()){
+    @for (t of userTask; track t.taskId) {
+    
         @if(t.isComplete == true){
     <li class="list-group-item d-flex justify-content-between">
         <button (click)="completeTask(t)">checked</button>{{t.task1}} {{t.deadline | date: 'shortDate'}}
@@ -30,7 +30,7 @@
     }
     }
 
-    }
+    
 </ul>
 
 <app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>

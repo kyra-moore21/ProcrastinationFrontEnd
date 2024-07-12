@@ -9,33 +9,33 @@ import { AddMealFormComponent } from "../add-meal-form/add-meal-form.component";
 import { UserModel } from '../../models/user';
 
 @Component({
-    selector: 'app-meal-planner',
-    standalone: true,
-    templateUrl: './meal-planner.component.html',
-    styleUrl: './meal-planner.component.css',
-    imports: [FormsModule, AddMealFormComponent]
+  selector: 'app-meal-planner',
+  standalone: true,
+  templateUrl: './meal-planner.component.html',
+  styleUrl: './meal-planner.component.css',
+  imports: [FormsModule, AddMealFormComponent]
 })
 export class MealPlannerComponent {
-  constructor(private mealService: MealPlannerService, private recipeService: RecipeService, private userService: UserService){}
+  constructor(private mealService: MealPlannerService, private recipeService: RecipeService, private userService: UserService) { }
 
   allMeals: MealPlannerModel[] = [];
   allRecipes: RecipeModel[] = [];
   randomRecipe: RecipeModel = {} as RecipeModel;
   formMeal: MealPlannerModel = {} as MealPlannerModel;
-  displayRecipe:boolean = false;
-  userMeals: MealPlannerModel[] = []
-  activeUser: UserModel = this.userService.currentUser
+  displayRecipe: boolean = false;
+  userMeals: MealPlannerModel[] = [];
+  activeUser: UserModel = this.userService.currentUser;
 
-ngOnInit(){
-  this.getUser();
-  this.GetAllRecipes();
-  this.GetRandomRecipe();
-  this.GetMealById(this.activeUser.userId);
-}
+  ngOnInit() {
+    this.getUser();
+    this.GetAllRecipes();
+    this.GetRandomRecipe();
+    this.GetMealById();
+  }
 
-getUser(){
-  return this.userService.currentUser.userId;
-}
+  getUser() {
+    return this.userService.currentUser.userId;
+  }
 
   // GetAllMeals(){
   //   this.mealService.GetAll().subscribe((response)=>{
@@ -44,93 +44,93 @@ getUser(){
   //   })
   // }
 
-  GetMealById(id:number){
-    this.userService.GetById(id).subscribe((response)=>{
-          this.mealService.GetById(id).subscribe((response)=>{ 
-      console.log(response)
-      this.userMeals = response;
-    })
-    })
+  GetMealById() {
+    // this.userService.GetById(id).subscribe((response) => {
+      this.mealService.GetById(this.userService.currentUser.userId).subscribe((response) => {
+        console.log(response);
+        this.userMeals = response;
+      })
+   // })
 
   }
 
-  AddMeal(m:MealPlannerModel){
-    this.mealService.AddMealPlan(m).subscribe((response:MealPlannerModel)=>{
+  AddMeal(m: MealPlannerModel) {
+    this.mealService.AddMealPlan(m).subscribe((response: MealPlannerModel) => {
       console.log(response);
-      this.GetMealById(this.activeUser.userId);
+      this.GetMealById();
     })
   }
 
-  UpdateMeal(targetMeal:MealPlannerModel){
-    this.mealService.UpdateMealPlan(targetMeal).subscribe((response)=>{
+  UpdateMeal(targetMeal: MealPlannerModel) {
+    this.mealService.UpdateMealPlan(targetMeal).subscribe((response) => {
       console.log(response);
-      this.GetMealById(this.activeUser.userId);
+      this.GetMealById();
     })
   }
 
-  completeMeal(t: MealPlannerModel){
+  completeMeal(t: MealPlannerModel) {
     t.isCompleted = !t.isCompleted;
     this.mealService.UpdateMealPlan(t).subscribe((response) => {
       console.log(response);
-      this.GetMealById(this.activeUser.userId);
+      this.GetMealById();
     });
   }
 
-  likeMeal(t: MealPlannerModel){
+  likeMeal(t: MealPlannerModel) {
     t.like = !t.like;
     this.mealService.UpdateMealPlan(t).subscribe((response) => {
       console.log(response);
-      this.GetMealById(this.activeUser.userId);
+      this.GetMealById();
     });
   }
 
 
-  DeleteMeal(id:number){
-    this.mealService.DeleteMeal(id).subscribe((response)=>{
+  DeleteMeal(id: number) {
+    this.mealService.DeleteMeal(id).subscribe((response) => {
       console.log(response)
-      this.GetMealById(this.activeUser.userId);
+      this.GetMealById();
     })
   }
 
-  GetAllRecipes(){
+  GetAllRecipes() {
     this.recipeService.getRecipes().subscribe((response: RecipeModel[]) => {
       this.allRecipes = response;
     })
   }
 
-  getRandom():number{
+  getRandom(): number {
     let random = Math.floor(Math.random() * 59);
-    console.log(random); 
+    console.log(random);
     return random;
   }
 
- GetRandomRecipe(){
-  let random:number = this.getRandom();
-  console.log(random);
-  this.recipeService.GetRecipeByID(random).subscribe((response: RecipeModel)=>{
-    console.log(response);
-    this.randomRecipe = response;
-   });
- }
-
- ConvertRecipetoMeal(r:RecipeModel){
-
-  let meal:MealPlannerModel = {
-    userId: this.userService.currentUser.userId,
-    mealId: 0,
-    title: r.title,
-    url: r.url,
-    like: false,
-    isCompleted: false
+  GetRandomRecipe() {
+    let random: number = this.getRandom();
+    console.log(random);
+    this.recipeService.GetRecipeByID(random).subscribe((response: RecipeModel) => {
+      console.log(response);
+      this.randomRecipe = response;
+    });
   }
-  this.AddMeal(meal)
- }
- ShowRecipe(){
-  this.displayRecipe = !this.displayRecipe;
- }
 
- ShuffleRecipe(){
-  this.displayRecipe = true;
-  this.GetRandomRecipe()
- }
+  ConvertRecipetoMeal(r: RecipeModel) {
+
+    let meal: MealPlannerModel = {
+      userId: this.userService.currentUser.userId,
+      mealId: 0,
+      title: r.title,
+      url: r.url,
+      like: false,
+      isCompleted: false
+    }
+    this.AddMeal(meal)
+  }
+  ShowRecipe() {
+    this.displayRecipe = !this.displayRecipe;
+  }
+
+  ShuffleRecipe() {
+    this.displayRecipe = true;
+    this.GetRandomRecipe()
+  }
 }

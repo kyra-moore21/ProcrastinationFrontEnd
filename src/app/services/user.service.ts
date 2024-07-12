@@ -50,6 +50,7 @@ export class UserService {
     this.AddUser(newUser).subscribe((response: UserModel) => {
       console.log(response);
       this.currentUser = response;
+
       this.router.navigate(['/homepage']);
     })
   }

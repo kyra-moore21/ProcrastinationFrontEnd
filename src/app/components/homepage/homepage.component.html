@@ -1,28 +1,8 @@
-@if(!this.IsLoggedIn()){
 
-    <div class="container-md">
 
-    <h4>Example List</h4>
-    <h5>Sign In To Create Your Own</h5>
-   @for (t of ExampleTasks; track t.taskId) {
-    <h6>@if(!t.isComplete){
-        <button (click)="toggle(t)">Complete</button>}
-        @else {
-            <button (click)="toggle(t)">Not Complete</button>
-        }
-        {{t.task1}}
-        
-        {{t.deadline | date: 'shortDate'}}
-    </h6>
-    <p>{{t.details}}</p>
-   }
-</div>
-
-}
-@else {
+    
     
     <app-daily-inspo></app-daily-inspo>
     <app-task-list></app-task-list>
     <app-meal-planner></app-meal-planner>
   
-}

@@ -1,31 +1,55 @@
 <div class="container-md">
-
-@if(this.GetDisplay() == "quote"){
+    @if(this.GetDisplay() == "quote"){
     @for(q of AllQuotes ; track $index){
-        <p>{{ q.q }} {{ q.a }}</p> 
-     }
-}
-@else if(this.GetDisplay() == "joke"){
-    <p>{{randomJoke.setup}}</p>
-    <p>{{randomJoke.punchline}}</p>
-}
-@else if (this.GetDisplay() == "weather") {
-    <label for="weather">Enter your City</label>
-    <input type="text" id="weather" [(ngModel)]="city"/>
-    <button (click)="getWeather(city)">Submit</button>
-<br/>
-@if(this.city != ""){
-<p>{{weather.main.temp}}</p>
-@for (w of weather.weather; track $index) {
-    <p>{{w.description}}</p>
-}
-}
-}
-@else if (this.GetDisplay() == "trivia") {
-    @for (t of trivia.results; track $index) {
-        <p [innerHTML]="t.question"></p>
-        <p>{{t.correct_answer}}</p>
+    <figure class="text-center">
+
+        <blockquote class="blockquote">
+
+            <p>{{ q.q }} </p>
+
+
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            {{ q.a }}
+        </figcaption>
+
+
+    </figure>
     }
-}
+    }
+    @else if(this.GetDisplay() == "joke"){
+    <div class="accordion accordion-flush" id="joke">
+        <div class="accordion-item ">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{randomJoke.setup}}
+
+            </button>
+            </div>
+      <div id="collapseOne" class="accordion-collapse collapse hide" data-bs-target=" joke">
+        <div class="accordion-body">
+            {{randomJoke.punchline}}
+        </div>
+      </div>
+        
+       
+    </div>
+    }
+    @else if (this.GetDisplay() == "weather") {
+    <label for="weather">Enter your City</label>
+    <input type="text" id="weather" [(ngModel)]="city" />
+    <button (click)="getWeather(city)">Submit</button>
+    <br />
+    @if(this.city != ""){
+    <p>{{weather.main.temp}}</p>
+    @for (w of weather.weather; track $index) {
+    <p>{{w.description}}</p>
+    }
+    }
+    }
+    @else if (this.GetDisplay() == "trivia") {
+    @for (t of trivia.results; track $index) {
+    <p [innerHTML]="t.question"></p>
+    <p>{{t.correct_answer}}</p>
+    }
+    }
 
 </div>

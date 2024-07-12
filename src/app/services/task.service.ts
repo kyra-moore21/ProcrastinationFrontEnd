@@ -16,8 +16,8 @@ export class TaskService {
     return this.http.get<TaskModel[]>(`${this.url}/api/Task`);
   }
 
-  GetTaskbyId(id:number):Observable<TaskModel> {
-    return this.http.get<TaskModel>(`${this.url}/api/Task/${id}`);
+  GetTaskbyId(id:number):Observable<TaskModel[]> {
+    return this.http.get<TaskModel[]>(`${this.url}/api/Task/${id}`);
   }
 
   AddTask(newTask:TaskModel):Observable<TaskModel>{
