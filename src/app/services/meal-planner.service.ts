@@ -16,8 +16,8 @@ export class MealPlannerService {
     return this.http.get<MealPlannerModel[]>(`${this.url}/api/MealPlanner`);
   }
 
-  GetById(id:number):Observable<MealPlannerModel>{
-    return this.http.get<MealPlannerModel>(`${this.url}/api/MealPlanner/${id}`);
+  GetById(id:number):Observable<MealPlannerModel[]>{
+    return this.http.get<MealPlannerModel[]>(`${this.url}/api/MealPlanner/${id}`);
   }
 
   AddMealPlan(newMeal:MealPlannerModel):Observable<MealPlannerModel>{

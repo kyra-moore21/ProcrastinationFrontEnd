@@ -1,32 +1,37 @@
-<app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>
+
+
+<div class="container-md">
 <h4>Today's Date: {{ currentDateTime }} </h4>
 
 <ul class="list-group">
     @for (t of AllTasks; track t.taskId) {
     @if(t.userId == this.getUser()){
-    @if(t.isComplete == true){
+        @if(t.isComplete == true){
     <li class="list-group-item d-flex justify-content-between">
-        <h6><button (click)="completeTask(t)">checked</button>{{t.task1}} {{t.deadline | date: 'shortDate'}}
+        <button (click)="completeTask(t)">checked</button>{{t.task1}} {{t.deadline | date: 'shortDate'}}
 
-            <button (click)="deleteTask(t.taskId)">Delete</button>
-        </h6>
-        <ul>
-            <li>{{ t.details }}</li>
-
-        </ul>
-    </li>
+            <button (click)="deleteTask(t.taskId)">X</button>
+            <ul>
+                <li>{{ t.details }}</li>
+    
+            </ul>
+          
+        </li>
 
     }
     @else{
     <li class="list-group-item d-flex justify-content-between">
         <p><button (click)="completeTask(t)">not checked</button> {{t.task1}} {{t.deadline | date: 'shortDate'}}<button
-                (click)="deleteTask(t.taskId)">Delete</button></p>
+                (click)="deleteTask(t.taskId)">X</button></p>
                 
     </li>
-    <li>{{t.details}}</li>
+    <li class="list-group-item d-flex justify-content-between">{{t.details}}</li>
     
     }
     }
 
     }
 </ul>
+
+<app-add-task-form (Submitted)="addTask($event)"></app-add-task-form>
+</div>

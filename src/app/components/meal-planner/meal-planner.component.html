@@ -1,4 +1,45 @@
+<div class="container-md">
+<div class="row">
 
+<div class="col">
+<p>--------------------</p>
+<h1>My Meals</h1>
+@for (m of userMeals; track m.mealId)
+ {
+    <!-- @if(m.userId == this.getUser()) -->
+    <!-- { -->
+        @if( m.isCompleted)
+        {
+            <button (click)="completeMeal(m)">Completed</button>
+        }
+        @else
+        {
+            <button (click)="completeMeal(m)">Not Completed</button>
+        }
+         {{ m.title }}
+
+        @if(m.like == true)
+        {
+            <button (click)="likeMeal(m)">thumbs up</button>
+    <!-- add bootstrap thumps up/down -->
+        }
+
+        @else 
+        {
+            <button (click)="likeMeal(m)">thumbs down</button>
+        }
+    <button (click)="DeleteMeal(m.mealId)">X</button>
+
+    <p>{{ m.url }}</p>
+ 
+}
+
+
+<app-add-meal-form (Submitted)="AddMeal($event)"></app-add-meal-form>
+</div>
+
+<div class="col">
+    <p>----------------</p>
 <p>Click Here for a random Recipe suggestion!</p>
 @if(displayRecipe == true){
 <button (click)="ShuffleRecipe()">Shuffle</button>
@@ -15,36 +56,7 @@
 <button (click)="ShowRecipe()">Recipe</button>
 
 }
+</div>
+</div>
 
-
-<p>--------------------</p>
-<h1>My Meals</h1>
-@for (m of allMeals; track $index) {
-    @if(m.userId == this.getUser()){<p>
-        @if( m.isCompleted){
-            <button (click)="completeMeal(m)">Completed</button>
-        }
-        @else{
-            <button (click)="completeMeal(m)">Not Completed</button>
-        }
-        {{ m.title }}
-
-
-
-        @if(m.like == true){
-            <button (click)="likeMeal(m)">thumbs up</button>
-    <!-- add bootstrap thumps up/down -->
-        }
-
-        @else {
-            <button (click)="likeMeal(m)">thumbs down</button>
-    }
-    <button (click)="DeleteMeal(m.mealId)">Delete Meal</button>
-    }
-    <p>{{ m.url }}</p>
- 
-}
-
-
-<app-add-meal-form (Submitted)="AddMeal($event)"></app-add-meal-form>
-
+</div>

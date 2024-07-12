@@ -1,15 +1,22 @@
-<div class="container">
 
-    <a routerLink="/">Home</a>
+<div class="container-fluid">
     
+ 
     
     @if (!IsLoggedIn()){
         <asl-google-signin-button></asl-google-signin-button>
     }
-    @else {<a routerLink="/profile">profile</a>
-        
+    @else {
+    <a routerLink="/homepage">Home</a> 
+    <a routerLink="/profile">profile</a>
         <button (click)="signOut()" routerLink="/">Sign Out</button>
     }
     
+</div>
+
+<div class="container">
+
+
+ 
     <router-outlet></router-outlet>
 </div>

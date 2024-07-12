@@ -6,6 +6,7 @@ import { RecipeService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { AddMealFormComponent } from "../add-meal-form/add-meal-form.component";
+import { UserModel } from '../../models/user';
 
 @Component({
     selector: 'app-meal-planner',
@@ -22,41 +23,48 @@ export class MealPlannerComponent {
   randomRecipe: RecipeModel = {} as RecipeModel;
   formMeal: MealPlannerModel = {} as MealPlannerModel;
   displayRecipe:boolean = false;
+  userMeals: MealPlannerModel[] = []
+  activeUser: UserModel = this.userService.currentUser
 
 ngOnInit(){
+  this.getUser();
   this.GetAllRecipes();
   this.GetRandomRecipe();
-  this.GetAllMeals();
+  this.GetMealById(this.activeUser.userId);
 }
 
 getUser(){
   return this.userService.currentUser.userId;
 }
 
-  GetAllMeals(){
-    this.mealService.GetAll().subscribe((response)=>{
-      console.log(response);
-      this.allMeals = response;
-    })
-  }
+  // GetAllMeals(){
+  //   this.mealService.GetAll().subscribe((response)=>{
+  //     console.log(response);
+  //     this.allMeals = response;
+  //   })
+  // }
 
   GetMealById(id:number){
-    this.mealService.GetById(id).subscribe((response)=>{
+    this.userService.GetById(id).subscribe((response)=>{
+          this.mealService.GetById(id).subscribe((response)=>{ 
       console.log(response)
+      this.userMeals = response;
     })
+    })
+
   }
 
   AddMeal(m:MealPlannerModel){
     this.mealService.AddMealPlan(m).subscribe((response:MealPlannerModel)=>{
       console.log(response);
-      this.GetAllMeals();
+      this.GetMealById(this.activeUser.userId);
     })
   }
 
   UpdateMeal(targetMeal:MealPlannerModel){
     this.mealService.UpdateMealPlan(targetMeal).subscribe((response)=>{
       console.log(response);
-      this.GetAllMeals();
+      this.GetMealById(this.activeUser.userId);
     })
   }
 
@@ -64,7 +72,7 @@ getUser(){
     t.isCompleted = !t.isCompleted;
     this.mealService.UpdateMealPlan(t).subscribe((response) => {
       console.log(response);
-      this.GetAllMeals();
+      this.GetMealById(this.activeUser.userId);
     });
   }
 
@@ -72,7 +80,7 @@ getUser(){
     t.like = !t.like;
     this.mealService.UpdateMealPlan(t).subscribe((response) => {
       console.log(response);
-      this.GetAllMeals();
+      this.GetMealById(this.activeUser.userId);
     });
   }
 
@@ -80,7 +88,7 @@ getUser(){
   DeleteMeal(id:number){
     this.mealService.DeleteMeal(id).subscribe((response)=>{
       console.log(response)
-      this.GetAllMeals()
+      this.GetMealById(this.activeUser.userId);
     })
   }
 

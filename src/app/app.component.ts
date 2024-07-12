@@ -24,9 +24,6 @@ export class AppComponent {
     
 
   ngOnInit(){
-    this.userService.GetUsers().subscribe((response) => {
-      this.userService.users = response;
-    });
     this.userService.Login();
   }
 

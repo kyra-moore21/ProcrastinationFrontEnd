@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserModel } from '../models/user';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,12 @@ export class UserService {
   currentUser: UserModel = {} as UserModel;
   loggedIn: boolean = false;
   users: UserModel[] = [];
-  constructor(private http:HttpClient, private socialAuthServiceConfig: SocialAuthService) { }
+  constructor(private http:HttpClient, private socialAuthServiceConfig: SocialAuthService, private router: Router) { }
 
   url:string = "https://localhost:7169";//Clare
 
   GetUsers():Observable<UserModel[]>{
-    return this.http.get<UserModel[]>(`${this.url}/api/User`);
+    return this.http.get<UserModel[]>(`${this.url}/api/User/`);
 
   }
 
@@ -49,10 +50,7 @@ export class UserService {
     this.AddUser(newUser).subscribe((response: UserModel) => {
       console.log(response);
       this.currentUser = response;
-      this.GetUsers().subscribe((response: UserModel[]) => {
-        console.log(response);
-        this.users = response;
-      });
+      this.router.navigate(['/homepage']);
     })
   }
 
@@ -71,6 +69,7 @@ export class UserService {
 
   signOut():void{
     this.socialAuthServiceConfig.signOut();
+    this.currentUser = {} as UserModel;
   }
 
 }
