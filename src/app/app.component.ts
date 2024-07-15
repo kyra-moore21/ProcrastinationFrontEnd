@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TestComponent } from './components/test/test.component';
 import { GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { UserService } from './services/user.service';
@@ -16,7 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 export class AppComponent {
   title = 'procrastinationPlannerFrontEnd';
 
-  constructor(private socialAuthServiceConfig:SocialAuthService, private userService:UserService){}
+  constructor(private socialAuthServiceConfig:SocialAuthService, private userService:UserService, private router: Router){}
 
      
     
@@ -25,14 +25,21 @@ export class AppComponent {
 
   ngOnInit(){
     this.userService.Login();
+   if(!this.userService.loggedIn){
+    this.router.navigate(['/'])
+   }
   }
 
   IsLoggedIn(){
     return this.userService.loggedIn;
+    
+    
   }
   signOut(): void {
     this.userService.signOut();
   }
+
+
 
 
 }

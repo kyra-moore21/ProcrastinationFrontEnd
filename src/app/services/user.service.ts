@@ -65,6 +65,9 @@ export class UserService {
       if(this.loggedIn){
         this.addUserToDB(this.user);
       }
+      else{
+        this.router.navigate(['/'])
+      }
     });
   }
 
