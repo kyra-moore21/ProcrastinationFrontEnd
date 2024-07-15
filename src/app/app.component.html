@@ -1,15 +1,17 @@
 
 <div class="container-fluid pb- 8">
     <nav class="navbar navbar-expand navbar-light navbar-custom fixed-top mb-8">
-        <!-- <a class="navbar-brand" routerLink="/homepage">Procrastinator Planner</a> -->
+        
 
 
         @if (!IsLoggedIn()){
+        <a class="navbar-brand" routerLink="/">Procrastinator Planner</a>
         <span class="ms-auto google-btn">
-            <asl-google-signin-button></asl-google-signin-button>
+            <asl-google-signin-button type="standard" text="continue_with"></asl-google-signin-button>
         </span>
         }
         @else {
+        <a class="navbar-brand" routerLink="/homepage">Procrastinator Planner</a>
         <a routerLink="/profile">Profile</a>
         <span class="ms-auto google-btn">
             <button (click)="signOut()" routerLink="/">Sign Out</button>

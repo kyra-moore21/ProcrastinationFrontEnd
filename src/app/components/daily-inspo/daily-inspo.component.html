@@ -20,7 +20,7 @@
     @else if(this.GetDisplay() == "joke"){
     <div class="accordion accordion-flush" id="joke">
         <div class="accordion-item ">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">{{randomJoke.setup}}
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">{{randomJoke.setup}}
 
             </button>
             </div>
@@ -34,22 +34,35 @@
     </div>
     }
     @else if (this.GetDisplay() == "weather") {
-    <label for="weather">Enter your City</label>
-    <input type="text" id="weather" [(ngModel)]="city" />
-    <button (click)="getWeather(city)">Submit</button>
-    <br />
-    @if(this.city != ""){
-    <p>{{weather.main.temp}}</p>
-    @for (w of weather.weather; track $index) {
-    <p>{{w.description}}</p>
-    }
-    }
+        @if(this.toggleWeather == true){
+            <div class="text-center">   
+                   
+                
+                @for (w of weather.weather; track $index) {    
+                    <img height="70px" src={{weatherUrl(w.icon)}} />
+                    <p>{{weather.main.temp}}°</p>
+                <p>{{w.description | titlecase}}</p>
+                }
+            </div>
+        }             
+        <div [class.spacing]="this.toggleWeather == false " class="row  mb-3 justify-content-center align-items-center">
+            <div class="col-auto">
+                <label for="weather" class="col-form-label">Enter your City: </label>
+            </div>
+            <div class="col-auto">
+                <input type="text" id="weather" class="form-control" [(ngModel)]="city" />
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" (click)="getWeather(city)">Submit</button>
+            </div>
+        </div>
+        
+        
     }
     @else if (this.GetDisplay() == "trivia") {
-    @for (t of trivia.results; track $index) {
-    <p [innerHTML]="t.question"></p>
-    <p>{{t.correct_answer}}</p>
+        @for (t of trivia.results; track $index) {
+        <p [innerHTML]="t.question"></p>
+        <p>{{t.correct_answer}}</p>
+        }
     }
-    }
-
 </div>

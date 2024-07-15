@@ -54,7 +54,7 @@ export class TaskListComponent {
   addTask(t: TaskModel) {
     this.taskService.AddTask(t).subscribe((response: TaskModel) => {
       console.log(response);
-      this.getTasks();
+      this.GetTaskById(this.activeUser.userId);
     });
   }
   getUser() {
@@ -64,13 +64,13 @@ export class TaskListComponent {
     t.isComplete = !t.isComplete;
     this.taskService.UpdateTask(t).subscribe((response) => {
       console.log(response);
-      this.getTasks();
+      this.GetTaskById(this.activeUser.userId);
     });
   }
   deleteTask(id: number) {
     this.taskService.DeleteTask(id).subscribe((response) => {
       console.log(response);
-      this.getTasks();
+      this.GetTaskById(this.activeUser.userId);
     })
 
   }

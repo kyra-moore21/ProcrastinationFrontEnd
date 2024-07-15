@@ -8,9 +8,9 @@
     
         @if(t.isComplete == true){
     <li class="list-group-item d-flex justify-content-between">
-        <button (click)="completeTask(t)">checked</button>{{t.task1}} {{t.deadline | date: 'shortDate'}}
+        <i  class="bi bi-check-square" (click)="completeTask(t)"></i>{{t.task1}} {{t.deadline | date: 'shortDate'}}
 
-            <button (click)="deleteTask(t.taskId)">X</button>
+            <button class="bi bi-trash3" (click)="deleteTask(t.taskId)"></button>
             <ul>
                 <li>{{ t.details }}</li>
     
@@ -21,9 +21,13 @@
     }
     @else{
     <li class="list-group-item d-flex justify-content-between">
-        <p><button (click)="completeTask(t)">not checked</button> {{t.task1}} {{t.deadline | date: 'shortDate'}}<button
-                (click)="deleteTask(t.taskId)">X</button></p>
+        <p><i class="bi bi-square" (click)="completeTask(t)"></i> {{t.task1}} {{t.deadline | date: 'shortDate'}}<button class="bi bi-trash3"
+                (click)="deleteTask(t.taskId)"></button></p>
                 
+                <ul>
+            
+                    
+                </ul>
     </li>
     <li class="list-group-item d-flex justify-content-between">{{t.details}}</li>
     

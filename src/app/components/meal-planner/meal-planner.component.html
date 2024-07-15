@@ -6,8 +6,7 @@
 <h1>My Meals</h1>
 @for (m of userMeals; track m.mealId)
  {
-    <!-- @if(m.userId == this.getUser()) -->
-    <!-- { -->
+   
         @if( m.isCompleted)
         {
             <button (click)="completeMeal(m)">Completed</button>

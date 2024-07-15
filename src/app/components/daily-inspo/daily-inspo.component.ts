@@ -12,11 +12,12 @@ import { JokeModel } from '../../models/joke';
 import { WeatherModel } from '../../models/weather';
 import { FormsModule } from '@angular/forms';
 import { TriviaModel } from '../../models/trivia';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-daily-inspo',
   standalone: true,
-  imports: [GoogleSigninButtonModule, FormsModule],
+  imports: [GoogleSigninButtonModule, FormsModule, TitleCasePipe],
   templateUrl: './daily-inspo.component.html',
   styleUrl: './daily-inspo.component.css'
 })
@@ -32,6 +33,7 @@ export class DailyInspoComponent {
     randomJoke: JokeModel = {} as JokeModel;
     weather: WeatherModel = {} as WeatherModel;
     trivia: TriviaModel = {}  as TriviaModel;
+    toggleWeather: boolean = false;
     city: string = "";
 
    ngOnInit(){
@@ -65,9 +67,10 @@ export class DailyInspoComponent {
       this.randomJoke = response;
      });
   }
-  getWeather(city:string){
+  getWeather(city:string){ 
         this.weatherService.getWeather(city).subscribe((response: WeatherModel) => {
         console.log(response);
+        this.toggleWeather = true;
         this.weather = response;
     })
     
@@ -80,6 +83,9 @@ export class DailyInspoComponent {
         this.trivia = response;
       });
     
+  }
+  weatherUrl(w: string):string{
+    return `http://openweathermap.org/img/w/${w}.png`;
   }
     
 }

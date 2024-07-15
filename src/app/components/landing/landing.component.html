@@ -5,9 +5,9 @@
     <h5>Sign In To Create Your Own</h5>
    @for (t of ExampleTasks; track t.taskId) {
     <h6>@if(!t.isComplete){
-        <button (click)="toggle(t)">Complete</button>}
+        <i class="bi bi-square" (click)="toggle(t)"></i>}
         @else {
-            <button (click)="toggle(t)">Not Complete</button>
+            <i class="bi bi-check-square" (click)="toggle(t)"></i>
         }
         {{t.task1}}
         
