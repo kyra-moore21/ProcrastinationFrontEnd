@@ -7,13 +7,14 @@ import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { AddMealFormComponent } from "../add-meal-form/add-meal-form.component";
 import { UserModel } from '../../models/user';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-meal-planner',
   standalone: true,
   templateUrl: './meal-planner.component.html',
   styleUrl: './meal-planner.component.css',
-  imports: [FormsModule, AddMealFormComponent]
+  imports: [FormsModule, AddMealFormComponent, CommonModule]
 })
 export class MealPlannerComponent {
   constructor(private mealService: MealPlannerService, private recipeService: RecipeService, private userService: UserService) { }
