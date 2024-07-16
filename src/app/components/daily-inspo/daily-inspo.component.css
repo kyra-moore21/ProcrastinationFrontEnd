@@ -13,6 +13,11 @@
 
 .accordion-item:focus:active {
     box-shadow: none;
-    border-color: rgba(0,0,0,.125);
+    /* border-color: rgba(0,0,0,.125); */
     background-color: transparent;
 }
+
+.accordian-body{
+    background-color:white;
+    }
+    

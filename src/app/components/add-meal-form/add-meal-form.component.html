@@ -1,22 +1,29 @@
 @if(!display){
 <button class="btn buttoncolorpink" (click)="toggleAdd()">Add a Meal</button>
 } @else {
+
 <div class="overlay">
+<div class="formstyle">
   <div class="form-popup">
-    <form ngNativeValidate>
-      <h2>Add Meal</h2>
+    <form (ngSubmit)="emitSubmitted()" ngNativeValidate>
+      <div class="d-flex justify-content-between">
+      <h3>Add Meal </h3>
+      <button class="btn" (click)="toggleAdd()">X</button>
+      </div>
       <label for="title">Title</label>
       <input
         id="title"
         type="text"
         name="title"
         [(ngModel)]="this.formMeal.title"
+        required=""
       />
       <label for="url">Url</label>
       <input id="url" type="text" name="url" [(ngModel)]="this.formMeal.url" />
-      <button type="submit" (click)="emitSubmitted()">Add Meal</button>
-      <button (click)="toggleAdd()">X</button>
+      <button class="buttoncolorblue btn" type="submit">Add Meal</button>
+
     </form>
   </div>
+</div>
 </div>
 }

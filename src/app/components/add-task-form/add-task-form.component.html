@@ -6,17 +6,20 @@
     @else {
         <div class="overlay">
             <div class="form-popup">
-                <form ngNativeValidate  >
+                <form (ngSubmit)="emitSubmitted()" ngNativeValidate  >
 
-                    <h3>Add a Task</h3>
+                    <div class="d-flex justify-content-between">
+                        <h3>Add a Task</h3>
+                        <button class="btn" (click)="toggleAdd()">X</button>
+                    </div>
+                    
                     <label for="task1" class="form-label">Task</label>
                     <input type="text" id="task1" class="form-control" name="task1" [(ngModel)]="formTask.task1" required=""/>
                     <label for="deadline">Deadline</label>
                     <input type="date" id="deadline" name="deadline" [(ngModel)]="formTask.deadline" required="" />
                     <label for="details">Details</label>
                     <input type="text" id="details" name="details" [(ngModel)]="formTask.details" required=""/>
-                    <button type="submit" (click)="emitSubmitted()">Add Task</button>
-                    <button (click)="toggleAdd()">X</button>
+                    <button class="buttoncolorblue btn" type="submit">Add Task</button>
                 </form>
     
             </div>
