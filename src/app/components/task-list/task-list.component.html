@@ -23,7 +23,7 @@
                 <td>{{t.task1}}</td>
                 <td>{{ t.details }}</td>
                 <td>{{t.deadline | date:'shortDate'}}</td>
-                <td><button class="bi bi-trash3 " (click)="deleteTask(t.taskId)"></button> </td>
+                <td><button class="bi bi-trash3 buttoncolorblue btn" (click)="deleteTask(t.taskId)"></button> </td>
 
             </tr>
             }
@@ -34,7 +34,7 @@
                 <td>{{t.task1}}</td>
                 <td>{{ t.details }}</td>
                 <td>{{t.deadline | date: 'shortDate'}}</td>
-                <td><button class="bi bi-trash3" (click)="deleteTask(t.taskId)"></button></td>
+                <td><button class="bi bi-trash3 buttoncolorblue btn" (click)="deleteTask(t.taskId)"></button></td>
             </tr>
 
 

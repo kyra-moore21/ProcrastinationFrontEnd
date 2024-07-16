@@ -12,9 +12,9 @@
         }
         @else {
         <a class="navbar-brand" routerLink="/homepage">Procrastinator Planner</a>
-        <a routerLink="/profile">Profile</a>
+        <a class="nav-link" routerLink="/profile">Profile</a>
         <span class="ms-auto google-btn">
-            <button (click)="signOut()" routerLink="/">Sign Out</button>
+            <a class="nav-link" (click)="signOut()" routerLink="/">Sign Out</a>
 
 
         </span>

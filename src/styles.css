@@ -26,11 +26,25 @@
 }
 .navbar-custom{
   margin-bottom: 10px;
-  background-color:aqua;
+  background-color:#a4def9;
 }
 .navbar-brand{
   margin-left: 16px;
 }
 :root{
   margin-top: 50px;
+}
+
+.buttoncolorblue{
+background-color: #275dad;
+color: white;
+}
+
+.buttoncolor:hover{
+  color: #275dad;
+  background-color: white;
+}
+.buttoncolor:hover:active{
+  color: #275dad;
+  background-color: white;
 }

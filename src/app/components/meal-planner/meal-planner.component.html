@@ -1,104 +1,61 @@
 <div class="container-md">
-<div class="row">
-
-<div class="col">
-<p>--------------------</p>
-<table class="table table-hover">
-<thead>
-    <th colspan="3">My Meals</th>
-</thead>
-<tbody>
-
-    
-
-        @for (m of userMeals; track m.mealId) {
-        <tr>     
+  <div class="row">
+    <div class="col bluediv" >
+      <table class="table table-hover">
+        <thead>
+          <th colspan="3">My Meals</th>
+        </thead>
+        <tbody>
+          @for (m of userMeals; track m.mealId) {
+          <tr>
             <td>
-            @if( m.isCompleted)
-                {
-                <i class="bi bi-check-square"(click)="completeMeal(m)"></i>
-                }
-            @else
-                {
-                 <i class="bi bi-square"(click)="completeMeal(m)"></i>
-                }
-            </td>  
-            <td (click)="m.url">
-            <a href= {{m.url}} >{{ m.title }}</a>
-            </td>  
-            <td>           
-                @if(m.like == true)
-                {
-                <button class="bi bi-star-fill star" (click)="likeMeal(m)"></button>
-                }
+              @if( m.isCompleted) {
+              <i class="bi bi-check-square" (click)="completeMeal(m)"></i>
+              } @else {
+              <i class="bi bi-square" (click)="completeMeal(m)"></i>
+              }
+            </td>
+            <td (click)="(m.url)">
+              <a href="{{ m.url }}">{{ m.title }}</a>
+            </td>
+            <td class="align-top text-center">
+              @if(m.like == true) {
+              <button
+                class="bi bi-star-fill star"
+                (click)="likeMeal(m)"
+              ></button>
+              } @else {
+              <button class="bi bi-star star" (click)="likeMeal(m)"></button>
+              }
+              <button
+                class="bi bi-trash3 buttoncolorblue btn"
+                (click)="DeleteMeal(m.mealId)"
+              ></button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
 
-                @else 
-                {
-                <button class="bi bi-star star" (click)="likeMeal(m)"></button>
-                }
-        <button class="bi bi-trash3" (click)="DeleteMeal(m.mealId)"></button>
+      <app-add-meal-form (Submitted)="AddMeal($event)"></app-add-meal-form>
+    </div>
 
-        </td>
-        </tr>
-}
-</tbody>
-</table>
+    <div class="col greendiv">
+      <p>Click Here for a random Recipe suggestion!</p>
+      @if(displayRecipe == true){
+      <button class="buttoncolorblue btn" (click)="ShuffleRecipe()">Shuffle</button>
+      <h4>{{ randomRecipe.title }}</h4>
+      <p>{{ randomRecipe.ingredients }}</p>
 
+      <img [width]="50" [src]="randomRecipe.photoUrl" />
+      <p>{{ randomRecipe.url }}</p>
+      <button (click)="ConvertRecipetoMeal(randomRecipe)">Add this meal</button>
+      <button (click)="ShowRecipe()">hide recipe</button>
 
+      } @else{
+      <button class="buttoncolorblue btn" (click)="ShowRecipe()">Recipe</button>
 
-<!-- 
-
-<h1>My Meals</h1>
-@for (m of userMeals; track m.mealId)
- {
-   
-        @if( m.isCompleted)
-        {
-            <i class="bi bi-check-square"(click)="completeMeal(m)"></i>
-        }
-        @else
-        {
-            <i class="bi bi-square"(click)="completeMeal(m)"></i>
-        }
-         {{ m.title }}
-
-        @if(m.like == true)
-        {
-            <button class="bi bi-star-fill star" (click)="likeMeal(m)"></button>
-        }
-
-        @else 
-        {
-            <button class="bi bi-star star" (click)="likeMeal(m)"></button>
-        }
-        <button class="bi bi-trash3" (click)="DeleteMeal(m.mealId)"></button>
-
-    <p>{{ m.url }}</p>
- 
-} -->
-
-<app-add-meal-form (Submitted)="AddMeal($event)"></app-add-meal-form>
-</div>
-
-<div class="col">
-    <p>----------------</p>
-<p>Click Here for a random Recipe suggestion!</p>
-@if(displayRecipe == true){
-<button (click)="ShuffleRecipe()">Shuffle</button>
-<h3>{{randomRecipe.title}}</h3>
-<p>{{randomRecipe.ingredients}}</p>
-
-<img [width]="50" [src]="randomRecipe.photoUrl" />
-<p>{{randomRecipe.url}}</p>
-<button (click)="ConvertRecipetoMeal(randomRecipe)">Add this meal</button>
-<button (click)="ShowRecipe()">hide recipe</button>
-
-}
-@else{
-<button (click)="ShowRecipe()">Recipe</button>
-
-}
-</div>
-</div>
-
+      }
+    </div>
+  </div>
 </div>

@@ -1,5 +1,17 @@
 .star {
-    color: red;
+    color: #ffb140;
     border: none;
     background-color: transparent;
+}
+
+.greendiv{
+    background-color: #a5c882;
+    border-radius: 10px;
+    margin-left: 6px;
+}
+
+.bluediv{
+    background-color: #a4def9;
+    border-radius: 10px;
+    margin-right: 6px;
 }
