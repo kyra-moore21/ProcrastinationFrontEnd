@@ -1,4 +1,4 @@
-<div class="container-md inspocolor">
+<div class="container-md inspocolor p-2">
     @if(this.GetDisplay() == "quote"){
     @for(q of AllQuotes ; track $index){
     <figure class="text-center">
@@ -20,49 +20,64 @@
     @else if(this.GetDisplay() == "joke"){
     <div class="accordion accordion-flush" id="joke">
         <div class="accordion-item ">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">{{randomJoke.setup}}
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">{{randomJoke.setup}}
 
             </button>
-            </div>
-      <div id="collapseOne" class="accordion-collapse collapse hide" data-bs-target=" joke">
-        <div class="accordion-body">
-            {{randomJoke.punchline}}
         </div>
-      </div>
-        
-       
+        <div id="collapseOne" class="accordion-collapse collapse hide" data-bs-target=" joke">
+            <div class="accordion-body">
+                {{randomJoke.punchline}}
+            </div>
+        </div>
+
+
     </div>
     }
     @else if (this.GetDisplay() == "weather") {
-        @if(this.toggleWeather == true){
-            <div class="text-center ">   
-                   
-                
-                @for (w of weather.weather; track $index) {    
-                    <img height="70px" src={{weatherUrl(w.icon)}} />
-                    <p>{{weather.main.temp}}°</p>
-                <p>{{w.description | titlecase}}</p>
-                }
-            </div>
-        }             
-        <div [class.spacing]="this.toggleWeather == false " class="row  mb-3 justify-content-center align-items-cente spaceundercityform">
-            <div class="col-auto">
-                <label for="weather" class="col-form-label">Enter your City: </label>
-            </div>
-            <div class="col-auto">
-                <input type="text" id="weather" class="form-control" [(ngModel)]="city" />
-            </div>
-            <div class="col-auto">
-                <button class="btn buttoncolorblue" (click)="getWeather(city)">Submit</button>
-            </div>
+    @if(this.toggleWeather == true){
+    <div class="text-center ">
+
+
+        @for (w of weather.weather; track $index) {
+        <img height="70px" src={{weatherUrl(w.icon)}} />
+        <p>{{weather.main.temp}}°</p>
+        <p>{{w.description | titlecase}}</p>
+        }
+    </div>
+    }
+    <div [class.spacing]="this.toggleWeather == false "
+        class="row  mb-3 justify-content-center align-items-cente spaceundercityform">
+        <div class="col-auto">
+            <label for="weather" class="col-form-label">Enter your City: </label>
         </div>
-        
-        
+        <div class="col-auto">
+            <input type="text" id="weather" class="form-control" [(ngModel)]="city" />
+        </div>
+        <div class="col-auto">
+            <button class="btn buttoncolorblue" (click)="getWeather(city)">Submit</button>
+        </div>
+    </div>
+
+
     }
     @else if (this.GetDisplay() == "trivia") {
-        @for (t of trivia.results; track $index) {
-        <p [innerHTML]="t.question"></p>
-        <p>{{t.correct_answer}}</p>
-        }
+    @for (t of trivia.results; track $index) {
+    <div class="accordion accordion-flush" id="joke">
+        <div class="accordion-item ">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <p [innerHTML]="t.question"></p>
+
+            </button>
+        </div>
+        <div id="collapseOne" class="accordion-collapse collapse hide" data-bs-target=" joke">
+            <div class="accordion-body">
+
+                <p>{{t.correct_answer}}</p>
+            </div>
+        </div>
+    </div>
+    }
     }
 </div>

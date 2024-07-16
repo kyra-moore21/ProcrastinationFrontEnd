@@ -32,8 +32,8 @@
               "src/styles.css"
  ],
 "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+             
 ]
           },
           "configurations": {

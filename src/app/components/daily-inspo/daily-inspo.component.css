@@ -10,3 +10,9 @@
     background-color: #a5c882;
     border-radius: 10px;
 }
+
+.accordion-item:focus:active {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+    background-color: transparent;
+}

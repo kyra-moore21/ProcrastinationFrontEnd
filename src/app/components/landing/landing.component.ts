@@ -12,8 +12,16 @@ import { DatePipe } from '@angular/common';
   styleUrl: './landing.component.css'
 })
 export class LandingComponent {
-  constructor(private userService:UserService){}
+  currentDateTime: string | null = "a";
+  constructor(private userService:UserService, public datePipe: DatePipe) {
+    this.currentDateTime = this.datePipe.transform((new Date), 'fullDate')}
+
   ExampleUser:UserModel = {} as UserModel;
+
+  DeleteTask(t:TaskModel):void{
+    let index: number = this.ExampleTasks.findIndex(p => p == t);
+    this.ExampleTasks.splice(index, 1);
+  }
   
   ExampleTasks:TaskModel[] = [
     {
@@ -76,46 +84,7 @@ export class LandingComponent {
     created: new Date("2024-10-12"),
     user: this.ExampleUser
   },
-  {
-    userId: 1,
-    taskId: 7,
-    task1: "Clean windows",
-    deadline: new Date("2024-11-13"),
-    details: "all windows in the house",
-    isComplete: false,
-    created: new Date("2024-10-13"),
-    user: this.ExampleUser
-  },
-  {
-    userId: 1,
-    taskId: 8,
-    task1: "Organize closet",
-    deadline: new Date("2024-11-14"),
-    details: "master bedroom closet",
-    isComplete: false,
-    created: new Date("2024-10-14"),
-    user: this.ExampleUser
-  },
-  {
-    userId: 1,
-    taskId: 9,
-    task1: "Dust shelves",
-    deadline: new Date("2024-11-15"),
-    details: "living room, bedroom",
-    isComplete: false,
-    created: new Date("2024-10-15"),
-    user: this.ExampleUser
-  },
-  {
-    userId: 1,
-    taskId: 11,
-    task1: "Pay bills",
-    deadline: new Date("2024-11-17"),
-    details: "electricity, water, internet",
-    isComplete: false,
-    created: new Date("2024-10-17"),
-    user: this.ExampleUser
-  }
+  
   ]
 
   

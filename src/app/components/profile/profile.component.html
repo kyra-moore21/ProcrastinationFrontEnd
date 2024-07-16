@@ -1,28 +1,37 @@
-<h3></h3>
-<img  [src]="currentUsers.photoUrl " width="50" height="50"/>
-<p>{{currentUsers.firstName}} {{ currentUsers.lastName }}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center 
+        text-center flex-column ">
+            <h3>Profile</h3>
+            <img  class="rounded mx-auto d-block" [src]="currentUsers.photoUrl " width="50" height="50" />
+            <p>{{currentUsers.firstName}} {{ currentUsers.lastName }}</p>
 
-<label for="display">Set Display</label>
-<select name="display" id="display"[(ngModel)]="currentUsers.display">
-    <option value="joke" >Joke</option>
-    <option value="quote">Quote</option>
-    <option value="weather">Weather</option>
-    <option value="trivia">Trivia</option>
-</select>
-    <button type="submit" (click)="updateUser(this.currentUsers)" >Set Display</button>
-    <br>
+            <label  class="strong" for="display">Set Display</label>
+            <select class="form-select m-1" name="display" id="display" [(ngModel)]="currentUsers.display">
+                <option value="joke">Joke</option>
+                <option value="quote">Quote</option>
+                <option value="weather">Weather</option>
+                <option value="trivia">Trivia</option>
+            </select>
+            <button class="btn buttoncolorblue" type="submit" (click)="updateUser(this.currentUsers)">Set Display</button>
+            <br>
 
 
-    @if(!deletedisplay){
-        <button (click)="toggleDisplay()">Delete Account</button>
-    }
-    @else {
-        <div class="overlay">
-            <div class="form-popup">
+            @if(!deletedisplay){
+            <button class="btn buttoncolorpink" (click)="toggleDisplay()">Delete Account</button>
+            }
+            @else {
+            <div class="overlay">
+                <div class="form-popup">
 
-                <p>Are you sure? Once you delete your account, all your data will be lost. </p>
-                <button (click)="toggleDisplay()">Nevermind, I want to keep my account</button>
-                <button routerLink="/" (click)="deleteUser(this.currentUsers.userId)">Delete Account</button>
+                    <p>Are you sure? Once you delete your account, all your data will be lost. </p>
+                    <button (click)="toggleDisplay()">Nevermind, I want to keep my account</button>
+                    <button routerLink="/" (click)="deleteUser(this.currentUsers.userId)">Delete Account</button>
+                </div>
             </div>
+            }
+
         </div>
-    }
+    </div>
+
+</div>
