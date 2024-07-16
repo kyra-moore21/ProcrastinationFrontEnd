@@ -35,7 +35,7 @@
     }
     @else if (this.GetDisplay() == "weather") {
         @if(this.toggleWeather == true){
-            <div class="text-center">   
+            <div class="text-center ">   
                    
                 
                 @for (w of weather.weather; track $index) {    
@@ -45,7 +45,7 @@
                 }
             </div>
         }             
-        <div [class.spacing]="this.toggleWeather == false " class="row  mb-3 justify-content-center align-items-center">
+        <div [class.spacing]="this.toggleWeather == false " class="row  mb-3 justify-content-center align-items-cente spaceundercityform">
             <div class="col-auto">
                 <label for="weather" class="col-form-label">Enter your City: </label>
             </div>
@@ -53,7 +53,7 @@
                 <input type="text" id="weather" class="form-control" [(ngModel)]="city" />
             </div>
             <div class="col-auto">
-                <button class="btn btn-primary" (click)="getWeather(city)">Submit</button>
+                <button class="btn buttoncolorblue" (click)="getWeather(city)">Submit</button>
             </div>
         </div>
         

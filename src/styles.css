@@ -37,14 +37,27 @@
 
 .buttoncolorblue{
 background-color: #275dad;
-color: white;
+color: #f3e0ec;
 }
 
-.buttoncolor:hover{
+.buttoncolorblue:hover{
   color: #275dad;
-  background-color: white;
+  background-color: #f3e0ec;
 }
-.buttoncolor:hover:active{
+.buttoncolorblue:hover:active{
   color: #275dad;
-  background-color: white;
+  background-color: #f3e0ec;
 }
+.buttoncolorpink{
+  background-color: #f3e0ec;
+  color: #275dad;
+  }
+  
+  .buttoncolorpink:hover{
+    color: #f3e0ec;
+    background-color: #275dad;
+  }
+  .buttoncolorblue:hover:active{
+    color: #f3e0ec;
+    background-color: #275dad;
+  }

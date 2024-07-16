@@ -2,6 +2,7 @@
     color: #ffb140;
     border: none;
     background-color: transparent;
+    margin-right: 0px;
 }
 
 .greendiv{
@@ -14,4 +15,13 @@
     background-color: #a4def9;
     border-radius: 10px;
     margin-right: 6px;
+}
+
+.link-dark{
+    text-decoration: none;
+}
+.fixed
+{
+    position: fixed;
+   
 }

@@ -1,7 +1,10 @@
 .spacing{
-    margin-top: 100px;
+    padding-top: 100px;
+   
 }
-
+.spaceundercityform{
+    padding-bottom: 10px;
+}
 .inspocolor{
 
     background-color: #a5c882;
