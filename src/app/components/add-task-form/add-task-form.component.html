@@ -15,11 +15,11 @@
                     
                     <label for="task1" class="form-label">Task</label>
                     <input type="text" id="task1" class="form-control" name="task1" [(ngModel)]="formTask.task1" required=""/>
-                    <label for="deadline">Deadline</label>
-                    <input type="date" id="deadline" name="deadline" [(ngModel)]="formTask.deadline" required="" />
-                    <label for="details">Details</label>
-                    <input type="text" id="details" name="details" [(ngModel)]="formTask.details" required=""/>
-                    <button class="buttoncolorblue btn" type="submit">Add Task</button>
+                    <label class="form-label" for="deadline">Deadline</label>
+                    <input type="date" id="deadline" class="form-control" name="deadline" [(ngModel)]="formTask.deadline" required="" />
+                    <label class="form-label" for="details"  >Details</label>
+                    <input type="text" id="details" name="details" class="form-control" [(ngModel)]="formTask.details" required=""/>
+                    <button class="buttoncolorblue btn mt-2" type="submit">Add Task</button>
                 </form>
     
             </div>

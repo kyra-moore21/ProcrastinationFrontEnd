@@ -10,17 +10,18 @@
       <h3>Add Meal </h3>
       <button class="btn" (click)="toggleAdd()">X</button>
       </div>
-      <label for="title">Title</label>
+      <label for="title" class="form-label">Title</label>
       <input
         id="title"
         type="text"
         name="title"
+        class="form-control"
         [(ngModel)]="this.formMeal.title"
         required=""
       />
-      <label for="url">Url</label>
-      <input id="url" type="text" name="url" [(ngModel)]="this.formMeal.url" />
-      <button class="buttoncolorblue btn" type="submit">Add Meal</button>
+      <label for="url" class="form-label">Url</label>
+      <input id="url" type="text" name="url" class="form-control" [(ngModel)]="this.formMeal.url" />
+      <button class="buttoncolorblue btn mt-2" type="submit">Add Meal</button>
 
     </form>
   </div>

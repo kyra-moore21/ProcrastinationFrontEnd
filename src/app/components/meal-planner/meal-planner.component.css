@@ -8,14 +8,15 @@
 .greendiv{
     background-color: #a5c882;
     border-radius: 10px;
-    margin-left: 6px;
-    /* min-height: 350px; */
+    width: 45%;
+    height: 90%;
+    min-height: 300px;
 }
 
 .bluediv{
     background-color: #a4def9;
     border-radius: 10px;
-    margin-right: 6px;
+    width: 45%;
     /* min-height: 350px; */
 }
 
@@ -26,4 +27,7 @@
 {
     position: fixed;
    
+}
+.sticky-offset {
+    top: 70px;
 }
