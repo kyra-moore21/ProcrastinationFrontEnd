@@ -5,13 +5,13 @@
 
 
         @if (!IsLoggedIn()){
-        <a class="navbar-brand" routerLink="/">Procrastinator Planner</a>
+        <a class="navbar-brand" routerLink="/">The Prioritizer</a>
         <span class="ms-auto google-btn">
             <asl-google-signin-button type="standard" text="continue_with"></asl-google-signin-button>
         </span>
         }
         @else {
-        <a class="navbar-brand" routerLink="/homepage">Procrastinator Planner</a>
+        <a class="navbar-brand" routerLink="/homepage">The Prioritizer</a>
         <a class="nav-link" routerLink="/profile">Profile</a>
         <span class="ms-auto google-btn">
             <a class="nav-link" (click)="signOut()" routerLink="/">Sign Out</a>
