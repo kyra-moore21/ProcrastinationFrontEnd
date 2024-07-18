@@ -1,3 +1,4 @@
 export const environment = { production: true,
-    clientId: "539781147741-fvg3mj7qu5o2h699rhllua905pe33m66.apps.googleusercontent.com"
+    clientId: "539781147741-fvg3mj7qu5o2h699rhllua905pe33m66.apps.googleusercontent.com",
+    url: "https://procrastinatorbackend20240705110551.azurewebsites.net"
 };
