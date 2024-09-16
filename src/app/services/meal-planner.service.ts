@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MealPlannerModel } from '../models/meal-planner';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class MealPlannerService {
 
   constructor(private http:HttpClient) { }
 
-  url:string = "https://localhost:7169"
+  url:string = environment.url
 
   GetAll():Observable<MealPlannerModel[]>{
     return this.http.get<MealPlannerModel[]>(`${this.url}/api/MealPlanner`);

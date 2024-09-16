@@ -8,7 +8,7 @@
     <figure class="text-center">
 
         <blockquote class="blockquote">
-
+            <h4>Quote of the Day</h4>
             <p>{{ q.q }} </p>
 
 
@@ -22,6 +22,7 @@
     }
     }
     @else if(this.GetDisplay() == "joke"){
+        <h4 class="text-center">Joke of the Day</h4>
     <div class="accordion accordion-flush" id="joke">
         <div class="accordion-item ">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -39,23 +40,28 @@
     </div>
     }
     @else if (this.GetDisplay() == "weather") {
-    @if(this.toggleWeather == true){
-    <div class="text-center ">
+        @if(this.toggleWeather == true){
+        <div class="text-center ">
 
 
         @for (w of weather.weather; track $index) {
+            <h4>Weather for {{this.city}}</h4>
         <img height="70px" src={{weatherUrl(w.icon)}} />
         <p>{{weather.main.temp}}°</p>
         <p>{{w.description | titlecase}}</p>
         }
     </div>
     }
+    @else {   <h4 class="text-center">Get Todays's Weather</h4>}
+ 
     <div [class.spacing]="this.toggleWeather == false "
         class="row  mb-3 justify-content-center align-items-cente spaceundercityform">
+
         <div class="col-auto">
             <label for="weather" class="col-form-label">Enter your City: </label>
         </div>
         <div class="col-auto">
+
             <input type="text" id="weather" class="form-control" [(ngModel)]="city" />
         </div>
         <div class="col-auto">
@@ -67,6 +73,7 @@
     }
     @else if (this.GetDisplay() == "trivia") {
     @for (t of trivia.results; track $index) {
+        <h4 class="text-center">Trivia of the Day</h4>
     <div class="accordion accordion-flush" id="joke">
         <div class="accordion-item ">
             <button class="accordion-button collapsed"  data-bs-toggle="collapse"

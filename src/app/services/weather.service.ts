@@ -11,7 +11,7 @@ export class WeatherService {
 
   constructor(private http:HttpClient) { }
 
-  url:string = "https://localhost:7169";
+  url:string = environment.url;
 
   getWeather(city:string):Observable<WeatherModel>{
     return this.http.get<WeatherModel>(`${this.url}/api/Weather?city=${city}`);
