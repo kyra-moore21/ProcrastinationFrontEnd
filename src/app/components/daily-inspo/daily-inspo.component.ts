@@ -12,7 +12,7 @@ import { JokeModel } from '../../models/joke';
 import { WeatherModel } from '../../models/weather';
 import { FormsModule } from '@angular/forms';
 import { TriviaModel } from '../../models/trivia';
-import { TitleCasePipe } from '@angular/common';
+import { DatePipe, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-daily-inspo',
@@ -22,9 +22,10 @@ import { TitleCasePipe } from '@angular/common';
   styleUrl: './daily-inspo.component.css'
 })
 export class DailyInspoComponent {
+  currentDateTime: string | null = "a";
   constructor(private jokeService:JokeService, private quoteService:QuoteService, 
     private recipeService:RecipeService, private triviaService:TriviaService, 
-    private weatherService:WeatherService, private userService:UserService){}
+    private weatherService:WeatherService, private userService:UserService, public datePipe: DatePipe ){  this.currentDateTime = this.datePipe.transform((new Date), 'fullDate'); }
 
    
    AllQuotes: QuoteModel [] = [];

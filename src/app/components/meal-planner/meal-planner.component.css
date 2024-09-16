@@ -1,23 +1,21 @@
-.star {
-    color: #ffb140;
-    border: none;
-    background-color: transparent;
-    margin-right: 0px;
-}
+
 
 .greendiv{
-    background-color: #a5c882;
+    background: linear-gradient(135deg, #bac8d6, #adbecf);
     border-radius: 10px;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+    color: black;
     width: 45%;
     height: 90%;
     min-height: 300px;
 }
 
 .bluediv{
-    background-color: #a4def9;
+    background: linear-gradient(135deg, #bac8d6, #adbecf);
     border-radius: 10px;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+    color: black;
     width: 45%;
-    /* min-height: 350px; */
 }
 
 .link-dark{

@@ -53,7 +53,8 @@
 }
 .navbar-custom{
   margin-bottom: 10px;
-  background-color:#a4def9;
+  padding-left: 120px;
+  padding-right: 120px;
 }
 .navbar-brand{
   margin-left: 16px;
@@ -62,31 +63,28 @@
   margin-top: 50px;
 }
 
-.buttoncolorblue{
-background-color: #275dad;
-color: #f3e0ec;
+.buttoncolorblue {
+  background-color: #275dad; /* Primary dark blue background */
+  color: #ffffff; /* White text for high contrast */
 }
 
-.buttoncolorblue:hover{
-  color: #275dad;
-  background-color: #f3e0ec;
+.buttoncolorblue:hover,
+.buttoncolorblue:hover:active { /* Lighter blue for hover/active states */
+  background-color: #4a90e2; /* Lighter blue */
+  color: #ffffff; /* White text remains constant for clarity */
 }
-.buttoncolorblue:hover:active{
-  color: #275dad;
-  background-color: #f3e0ec;
+
+.buttoncoloraltblue {
+  background-color: #4a90e2; /* Lighter blue background */
+  color: #ffffff; /* White text */
 }
-.buttoncolorpink{
-  background-color: #f3e0ec;
-  color: #275dad;
-  }
-  
-  .buttoncolorpink:hover{
-    color: #f3e0ec;
-    background-color: #275dad;
-  }
-  .buttoncolorblue:hover:active{
-    color: #f3e0ec;
-    background-color: #275dad;
-  }
+
+.buttoncoloraltblue:hover,
+.buttoncoloraltblue:hover:active { /* Darker blue for hover/active states */
+  background-color: #275dad; /* Primary dark blue */
+  color: #ffffff; /* White text */
+}
+
+
 
   

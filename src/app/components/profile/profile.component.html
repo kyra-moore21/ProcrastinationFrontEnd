@@ -1,13 +1,13 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12 d-flex justify-content-center 
-        text-center flex-column ">
+    <div class="row justify-content-center ">
+        <div class="col-6 d-flex 
+        text-center flex-column">
             <h3>Profile</h3>
-            <img  class="rounded mx-auto d-block" [src]="currentUsers.photoUrl " width="50" height="50" />
+            
             <p>{{currentUsers.firstName}} {{ currentUsers.lastName }}</p>
 
-            <label  class="strong" for="display">Set Display</label>
-            <select class="form-select m-1" name="display" id="display" [(ngModel)]="currentUsers.display">
+            <label  class="strong" for="display">Change Daily Inspo</label>
+            <select class="form-select mb-1" name="display" id="display" [(ngModel)]="currentUsers.display">
                 <option value="joke">Joke</option>
                 <option value="quote">Quote</option>
                 <option value="weather">Weather</option>
@@ -18,7 +18,7 @@
 
 
             @if(!deletedisplay){
-            <button class="btn buttoncolorpink" (click)="toggleDisplay()">Delete Account</button>
+            <button class="btn buttoncolorblue" (click)="toggleDisplay()">Delete Account</button>
             }
             @else {
             <div class="overlay">
@@ -26,7 +26,7 @@
 
                     <p>Are you sure? Once you delete your account, all your data will be lost. </p>
                     <button class="btn buttoncolorblue me-1" (click)="toggleDisplay()">Nevermind, I want to keep my account</button>
-                    <button class="btn buttoncolorpink ms-1"  routerLink="/" (click)="deleteUser(this.currentUsers.userId)">Delete Account</button>
+                    <button class="btn buttoncolorblue ms-1"  routerLink="/" (click)="deleteUser(this.currentUsers.userId)">Delete Account</button>
                 </div>
             </div>
             }

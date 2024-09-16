@@ -1,27 +1,30 @@
 
 
 @if(!display){
-    <button class="btn buttoncolorpink" (click)="toggleAdd()">Add a Task</button>
+    <button class="btn buttoncolorblue" (click)="toggleAdd()">Add a Task</button>
     }
     @else {
         <div class="overlay">
-            <div class="form-popup">
-                <form (ngSubmit)="emitSubmitted()" ngNativeValidate  >
+            <div class="formstyle">
 
-                    <div class="d-flex justify-content-between">
-                        <h3>Add a Task</h3>
-                        <button class="btn" (click)="toggleAdd()">X</button>
-                    </div>
-                    
-                    <label for="task1" class="form-label">Task</label>
-                    <input type="text" id="task1" class="form-control" name="task1" [(ngModel)]="formTask.task1" required=""/>
-                    <label class="form-label" for="deadline">Deadline</label>
-                    <input type="date" id="deadline" class="form-control" name="deadline" [(ngModel)]="formTask.deadline" required="" />
-                    <label class="form-label" for="details"  >Details</label>
-                    <input type="text" id="details" name="details" class="form-control" [(ngModel)]="formTask.details" required=""/>
-                    <button class="buttoncolorblue btn mt-2" type="submit">Add Task</button>
-                </form>
+                <div class="form-popup formstyle">
+                    <form (ngSubmit)="emitSubmitted()" ngNativeValidate  >
     
+                        <div class="d-flex justify-content-between">
+                            <h3>Add a Task</h3>
+                            <button class="btn" (click)="toggleAdd()">X</button>
+                        </div>
+                        
+                        <label for="task1" class="form-label">Task</label>
+                        <input type="text" id="task1" class="form-control" name="task1" [(ngModel)]="formTask.task1" required=""/>
+                        <label class="form-label" for="deadline">Deadline</label>
+                        <input type="date" id="deadline" class="form-control" name="deadline" [(ngModel)]="formTask.deadline" required="" />
+                        <label class="form-label" for="details"  >Details</label>
+                        <input type="text" id="details" name="details" class="form-control" [(ngModel)]="formTask.details" required=""/>
+                        <button class="buttoncolorblue btn mt-2" type="submit">Add Task</button>
+                    </form>
+        
+                </div>
             </div>
         </div>
     }

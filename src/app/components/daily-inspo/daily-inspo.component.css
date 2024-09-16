@@ -5,11 +5,14 @@
 .spaceundercityform{
     padding-bottom: 10px;
 }
-.inspocolor{
-
-    background-color: #a5c882;
+.inspocolor {
+    color: black;
+    background: linear-gradient(135deg, #bac8d6, #adbecf);
     border-radius: 10px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .accordion-item:focus:active {
     box-shadow: none;
@@ -20,4 +23,5 @@
 .accordian-body{
     background-color:white;
     }
+    
     

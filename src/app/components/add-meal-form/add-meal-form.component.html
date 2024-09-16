@@ -1,10 +1,10 @@
 @if(!display){
-<button class="btn buttoncolorpink" (click)="toggleAdd()">Add a Meal</button>
+<button class="btn buttoncolorblue mb-2" (click)="toggleAdd()">Add a Meal</button>
 } @else {
 
 <div class="overlay">
 <div class="formstyle">
-  <div class="form-popup">
+  <div class="form-popup formstyle">
     <form (ngSubmit)="emitSubmitted()" ngNativeValidate>
       <div class="d-flex justify-content-between">
       <h3>Add Meal </h3>

@@ -1,0 +1,24 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+ .background {
+    min-height: 100vh; 
+    background: linear-gradient(to left bottom, #283d57, #1a2d63, #162237, #0f1b2f, #050f1a);
+
+
+    color: rgb(253, 241, 219);
+    box-sizing: border-box; 
+ }
+.bg{
+    background: transparent;
+}
+.navbar-custom{
+    background-color: #3D5A80;
+    
+}
+.navbar-brand{
+    color: rgb(253, 241, 219);
+}
