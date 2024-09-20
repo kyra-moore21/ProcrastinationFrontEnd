@@ -8,10 +8,10 @@
           
         </thead>
         <tbody>
-          @for (m of userMeals; track m.mealId) {
+          @for (m of userMeals; track m.mealid) {
           <tr>
             <td>
-              @if( m.isCompleted) {
+              @if( m.iscompleted) {
               <i class="bi bi-check-square" (click)="completeMeal(m)"></i>
               } @else {
               <i class="bi bi-square" (click)="completeMeal(m)"></i>
@@ -29,7 +29,7 @@
             <td class="align-items-center text-center">
              
               <div>
-                <button class="bi bi-trash3 buttoncolorblue btn" (click)="DeleteMeal(m.mealId)"></button>
+                <button class="bi bi-trash3 buttoncolorblue btn" (click)="DeleteMeal(m.mealid)"></button>
               </div>
             </td>
           </tr>

@@ -16,8 +16,8 @@
             </tr>
         </thead>
         <tbody>
-            @for (t of ExampleTasks; track t.taskId) {
-            @if(!t.isComplete){
+            @for (t of ExampleTasks; track t.taskid) {
+            @if(!t.iscomplete){
             <tr>
                 <td> <i class="bi bi-square" (click)="toggle(t)"></i></td>
                 <td>{{t.task1}}</td>

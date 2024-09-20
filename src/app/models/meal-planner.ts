@@ -1,8 +1,8 @@
 export interface MealPlannerModel {
-    userId:      number;
-    mealId:      number;
+    userid:      number;
+    mealid:      number;
     title:       string;
     url:         string;
     like:        boolean;
-    isCompleted: boolean;
+    iscompleted: boolean;
 }

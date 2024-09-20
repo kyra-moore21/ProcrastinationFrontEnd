@@ -32,7 +32,7 @@ export class UserService {
   }
 
   UpdateUser(targetUser:UserModel):Observable<void>{
-    return this.http.put<void>(`${environment.url}/api/User/${targetUser.userId}`, targetUser);
+    return this.http.put<void>(`${environment.url}/api/User/${targetUser.userid}`, targetUser);
   }
 
   DeleteUser(id:number):Observable<void>{
@@ -40,11 +40,11 @@ export class UserService {
   }
   addUserToDB(u: SocialUser){
     let newUser: UserModel = {
-      userId: 0,
-    firstName: u.firstName,
-    lastName:  u.lastName,
+      userid: 0,
+    firstname: u.firstName,
+    lastname:  u.lastName,
     email:     u.email,
-    photoUrl:  u.photoUrl,
+    photourl:  u.photoUrl,
     display:   "weather"
     }
 

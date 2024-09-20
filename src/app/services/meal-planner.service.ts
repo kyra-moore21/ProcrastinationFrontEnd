@@ -26,7 +26,7 @@ export class MealPlannerService {
   }
 
   UpdateMealPlan(targetMeal:MealPlannerModel):Observable<void>{
-    return this.http.put<void>(`${this.url}/api/MealPlanner/${targetMeal.mealId}`, targetMeal);
+    return this.http.put<void>(`${this.url}/api/MealPlanner/${targetMeal.mealid}`, targetMeal);
   }
 
   DeleteMeal(id:number):Observable<void>{

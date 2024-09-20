@@ -27,13 +27,9 @@ export class TaskListComponent {
 
 
   ngOnInit() {
-    this.GetTaskById(this.activeUser.userId);
+    this.GetTaskById(this.activeUser.userid);
 
   }
-
-  // getCurrentDate(){
-  //   this.currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss');
-  // }
 
   getTasks() {
     this.taskService.GetAllTasks().subscribe((response: TaskModel[]) => {
@@ -54,23 +50,23 @@ export class TaskListComponent {
   addTask(t: TaskModel) {
     this.taskService.AddTask(t).subscribe((response: TaskModel) => {
       console.log(response);
-      this.GetTaskById(this.activeUser.userId);
+      this.GetTaskById(this.activeUser.userid);
     });
   }
   getUser() {
-    return this.userService.currentUser.userId;
+    return this.userService.currentUser.userid;
   }
   completeTask(t: TaskModel) {
-    t.isComplete = !t.isComplete;
+    t.iscomplete = !t.iscomplete;
     this.taskService.UpdateTask(t).subscribe((response) => {
       console.log(response);
-      this.GetTaskById(this.activeUser.userId);
+      this.GetTaskById(this.activeUser.userid);
     });
   }
   deleteTask(id: number) {
     this.taskService.DeleteTask(id).subscribe((response) => {
       console.log(response);
-      this.GetTaskById(this.activeUser.userId);
+      this.GetTaskById(this.activeUser.userid);
     })
 
   }

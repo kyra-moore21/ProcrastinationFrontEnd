@@ -26,7 +26,7 @@ export class TaskService {
   }
 
   UpdateTask(updateTask:TaskModel):Observable<void>{
-    return this.http.put<void>(`${this.url}/api/Task/${updateTask.taskId}`, updateTask);
+    return this.http.put<void>(`${this.url}/api/Task/${updateTask.taskid}`, updateTask);
   }
 
 

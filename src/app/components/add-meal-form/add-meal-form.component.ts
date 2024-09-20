@@ -21,9 +21,9 @@ export class AddMealFormComponent {
   ) {}
 
   emitSubmitted() {
-    this.formMeal.isCompleted = false;
+    this.formMeal.iscompleted = false;
     this.formMeal.like = false;
-    this.formMeal.userId = this.userService.currentUser.userId;
+    this.formMeal.userid = this.userService.currentUser.userid;
     let addMeal: MealPlannerModel = { ...this.formMeal };
     this.Submitted.emit(addMeal);
     this.formMeal = {} as MealPlannerModel;

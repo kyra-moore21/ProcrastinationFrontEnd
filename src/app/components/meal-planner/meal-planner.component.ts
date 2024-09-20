@@ -35,7 +35,7 @@ export class MealPlannerComponent {
   }
 
   getUser() {
-    return this.userService.currentUser.userId;
+    return this.userService.currentUser.userid;
   }
 
   // GetAllMeals(){
@@ -47,7 +47,7 @@ export class MealPlannerComponent {
 
   GetMealById() {
     // this.userService.GetById(id).subscribe((response) => {
-      this.mealService.GetById(this.userService.currentUser.userId).subscribe((response) => {
+      this.mealService.GetById(this.userService.currentUser.userid).subscribe((response) => {
         console.log(response);
         this.userMeals = response;
       })
@@ -70,7 +70,7 @@ export class MealPlannerComponent {
   }
 
   completeMeal(t: MealPlannerModel) {
-    t.isCompleted = !t.isCompleted;
+    t.iscompleted = !t.iscompleted;
     this.mealService.UpdateMealPlan(t).subscribe((response) => {
       console.log(response);
       this.GetMealById();
@@ -117,12 +117,12 @@ export class MealPlannerComponent {
   ConvertRecipetoMeal(r: RecipeModel) {
 
     let meal: MealPlannerModel = {
-      userId: this.userService.currentUser.userId,
-      mealId: 0,
+      userid: this.userService.currentUser.userid,
+      mealid: 0,
       title: r.title,
       url: r.url,
       like: false,
-      isCompleted: false
+      iscompleted: false
     }
     this.AddMeal(meal)
   }

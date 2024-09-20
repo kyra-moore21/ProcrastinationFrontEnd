@@ -18,8 +18,8 @@ export class AddTaskFormComponent {
     constructor(private userService:UserService){}
 
     emitSubmitted(){
-      this.formTask.isComplete = false;
-      this.formTask.userId = this.userService.currentUser.userId;
+      this.formTask.iscomplete = false;
+      this.formTask.userid = this.userService.currentUser.userid;
       let newTask:TaskModel = {...this.formTask};
      this.Submitted.emit(newTask);
      this.toggleAdd();
